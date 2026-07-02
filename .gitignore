@@ -1,0 +1,16 @@
+# local notes, not part of the submission
+re-fresh-*.md
+notes/
+
+# python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+.env
+
+# model outputs (too big for git)
+outputs/
+*.safetensors
+*.bin
+results/checkpoints/
