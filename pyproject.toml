@@ -8,13 +8,5 @@ dependencies = [
     "pandas>=2.0",
 ]
 
-# only needed on the GPU box (Colab), not locally
-[project.optional-dependencies]
-train = [
-    "transformers==4.48.0",
-    "trl==0.13.0",
-    "peft==0.14.0",
-    "bitsandbytes==0.45.0",
-    "accelerate==1.2.1",
-    "torch>=2.4.0",
-]
+# training deps live as pinned installs inside the Colab notebooks,
+# since that's the only place they run

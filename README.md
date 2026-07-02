@@ -42,9 +42,10 @@ See `docs/report.md` for the full evaluation. Metrics used: exact match and norm
 Local setup uses [uv](https://docs.astral.sh/uv/):
 
 ```
-uv sync              # just datasets/pandas, enough for data prep
-uv sync --extra train  # full training stack (only needed on a GPU box)
+uv sync   # just datasets/pandas, enough for data prep
 ```
+
+The GPU notebooks install their own pinned deps, they only ever run on Colab.
 
 1. `01_data_prep.ipynb` runs anywhere (CPU is fine), regenerates `data/*.jsonl`
 2. `02_train_qlora.ipynb` needs a GPU, made for Colab T4 (installs its own pins). Saves the LoRA adapter.
