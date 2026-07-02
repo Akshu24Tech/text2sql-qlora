@@ -33,17 +33,19 @@ I picked text-to-SQL because it has an objective right answer per example. That 
 - Instruct-tuned already, so it follows the output format quickly and the fine-tune only has to teach SQL precision, not instruction following from scratch.
 - Strong base quality for its size compared to alternatives I considered (TinyLlama-1.1B, Phi-2).
 
+Architecture in one line: a standard decoder-only transformer (1.5B params, grouped-query attention, ~32k vocab chat template), kept frozen in 4-bit; the only trainable parts are the LoRA adapter matrices injected into the attention and MLP projection layers.
+
 ## Training / Fine-Tuning Process
 
 QLoRA (`notebooks/02_train_qlora.ipynb`):
 - Base model loaded in 4-bit NF4 with double quantization, fp16 compute (T4 has no bf16).
 - LoRA: r=16, alpha=32, dropout 0.05, on all attention and MLP projections (q/k/v/o/gate/up/down). Attention-only adapters underperformed in a quick smoke test.
-- 1 epoch over 8k examples, effective batch 16 (4 per device x 4 accumulation), lr 2e-4 cosine with 3% warmup, max sequence 512, gradient checkpointing on.
+- 1 epoch over 8k examples, effective batch 16 (4 per device x 4 accumulation), lr 2e-4 cosine with 3% warmup, gradient checkpointing on. Sequences stay short by construction thanks to the length filtering in data prep.
 - Trainable params: <!-- TODO: from print_trainable_parameters -->
 - Training time on T4: <!-- TODO -->
 - Final training loss: <!-- TODO: from trainer logs -->
 
-Only the LoRA adapter (~70MB) is saved and pushed to the Hub, not the full model.
+Only the LoRA adapter (~70MB) is saved (to Google Drive), not the full model. The eval notebook loads the base model fresh and applies the adapter on top.
 
 ## Evaluation Results
 
@@ -63,7 +65,7 @@ Normalized match ignores case, extra whitespace and a trailing semicolon, since 
 - **T4 memory budget.** Full fine-tuning a 1.5B model doesn't fit; 4-bit NF4 + LoRA + gradient checkpointing does, with the sequence length capped at 512. The length filtering in data prep follows directly from this.
 - **Base model output noise.** The base model loves wrapping SQL in markdown fences or explaining itself, which tanks exact match for formatting rather than correctness reasons. The system prompt plus fine-tuning fixed the format; the normalized metric keeps the base comparison fair.
 - **Metric honesty.** String match under-counts correct answers (e.g. `WHERE a=1 AND b=2` vs the flipped order). Proper execution accuracy would need to actually build and run each schema; noted under improvements.
-- <!-- TODO: add anything real that comes up during the run -->
+- **Library version clash on Colab.** My first version pinned an older bitsandbytes, which crashed on model load (`No module named 'triton.ops'`) because Colab's preinstalled triton had removed that module. Lesson: on a managed environment like Colab, work with the preinstalled torch stack and upgrade only what's needed, instead of pinning everything against it.
 
 ## Possible Improvements
 

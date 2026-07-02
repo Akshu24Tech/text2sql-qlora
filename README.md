@@ -48,5 +48,5 @@ uv sync   # just datasets/pandas, enough for data prep
 The GPU notebooks install their own pinned deps, they only ever run on Colab.
 
 1. `01_data_prep.ipynb` runs anywhere (CPU is fine), regenerates `data/*.jsonl`
-2. `02_train_qlora.ipynb` needs a GPU, made for Colab T4 (installs its own pins). Saves the LoRA adapter.
+2. `02_train_qlora.ipynb` needs a GPU, made for Colab T4. Saves the LoRA adapter (~70MB) to Google Drive.
 3. `03_evaluate.ipynb` also needs a GPU, loads base + adapter and scores both.
