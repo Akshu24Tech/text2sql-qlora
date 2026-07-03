@@ -45,6 +45,10 @@ docs/
 
 See `docs/report.md` for the full write-up. Short version: on the held-out eval subset the fine-tuned adapter did **not** move the numbers relative to the base model — both score the same, and the discussion in the report explains what happened and why the string-match metric is harsh here.
 
+## Live demo
+
+A Gradio demo of the fine-tuned model is deployable to a free Hugging Face Space (paste a schema + question, get SQL back). App, config, and step-by-step deploy instructions are in [`deploy/hf-space/`](deploy/hf-space/DEPLOY.md).
+
 ## Running it
 
 Notebook 1 runs locally (CPU) for data prep:
