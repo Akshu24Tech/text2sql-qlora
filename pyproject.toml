@@ -1,12 +1,12 @@
 [project]
 name = "text2sql-qlora"
 version = "0.1.0"
-description = "QLoRA fine-tune of Qwen2.5-1.5B-Instruct for text-to-SQL"
+description = "QLoRA fine-tuning of Qwen2.5-1.5B-Instruct for text-to-SQL"
 requires-python = ">=3.10"
 dependencies = [
+    # notebook 01 (data prep) is all this needs, and it runs on CPU locally.
+    # notebooks 02 and 03 run on Colab, which installs the GPU stack
+    # (bitsandbytes, peft, trl, accelerate) itself — see the pip cell at the top of each.
     "datasets>=3.2.0",
     "pandas>=2.0",
 ]
-
-# training deps live as pinned installs inside the Colab notebooks,
-# since that's the only place they run

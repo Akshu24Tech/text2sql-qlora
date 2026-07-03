@@ -1,0 +1,1202 @@
+[
+  {
+    "question": "Which time/retired has a grid of 9?",
+    "reference": "SELECT time_retired FROM table_name_79 WHERE grid = \"9\"",
+    "base": "SELECT time_retired FROM table_name_79 WHERE grid = '9'",
+    "tuned": "SELECT time_retired FROM table_name_79 WHERE grid = '9'"
+  },
+  {
+    "question": "What were the years for Seasons in CSL when they played in the Guiyang Olympic Sports Center and had Top Division Titles (Overall) of 0?",
+    "reference": "SELECT seasons_in_csl FROM table_name_15 WHERE top_division_titles__overall_ = 0 AND home_stadium = \"guiyang olympic sports center\"",
+    "base": "```sql\nSELECT seasons_in_csl FROM table_name_15 WHERE home_stadium = 'Guiyang Olympic Sports Center' AND top_division_titles__overall_ = '0';\n```",
+    "tuned": "```sql\nSELECT seasons_in_csl FROM table_name_15 WHERE home_stadium = 'Guiyang Olympic Sports Center' AND top_division_titles__overall_ = '0';\n```"
+  },
+  {
+    "question": "Name the  Silver that has a Total smaller than 2, and a Nation of south korea?",
+    "reference": "SELECT AVG(silver) FROM table_name_49 WHERE total < 2 AND nation = \"south korea\"",
+    "base": "```sql\nSELECT silver FROM table_name_49 WHERE total < 2 AND nation = 'south korea';\n```",
+    "tuned": "```sql\nSELECT silver FROM table_name_49 WHERE total < 2 AND nation = 'south korea';\n```"
+  },
+  {
+    "question": "Name the mascot for shelbyville",
+    "reference": "SELECT mascot FROM table_name_33 WHERE school = \"shelbyville\"",
+    "base": "SELECT mascot FROM table_name_33 WHERE school = 'shelbyville'",
+    "tuned": "SELECT mascot FROM table_name_33 WHERE school = 'shelbyville'"
+  },
+  {
+    "question": "In which area was there a score of 68?",
+    "reference": "SELECT place FROM table_name_42 WHERE score = 68",
+    "base": "SELECT place FROM table_name_42 WHERE score = '68'",
+    "tuned": "SELECT place FROM table_name_42 WHERE score = '68'"
+  },
+  {
+    "question": "What's the l1 cache of the model with sspec number sl2z3, sl28q (mya0)?",
+    "reference": "SELECT l1_cache FROM table_24096813_15 WHERE sspec_number = \"SL2Z3, SL28Q (myA0)\"",
+    "base": "SELECT t1.l1_cache FROM table_24096813_15 AS t1  WHERE t1.sspec_number IN ('sl2z3', 'sl28q (mya0)')",
+    "tuned": "SELECT t1.l1_cache FROM table_24096813_15 AS t1  WHERE t1.sspec_number IN ('sl2z3', 'sl28q (mya0)')"
+  },
+  {
+    "question": "What is the lowest rank has 7:09.06 as the time?",
+    "reference": "SELECT MIN(rank) FROM table_name_81 WHERE time = \"7:09.06\"",
+    "base": "SELECT AVG(rank) FROM table_name_81 WHERE time = '7:09.06'",
+    "tuned": "SELECT AVG(rank) FROM table_name_81 WHERE time = '7:09.06'"
+  },
+  {
+    "question": "What engine does the Fuzzy's Ultra Premium Vodka sponsored car use?",
+    "reference": "SELECT engine FROM table_2503102_1 WHERE car_sponsor_s_ = \"Fuzzy's Ultra Premium Vodka\"",
+    "base": "SELECT engine FROM table_2503102_1 WHERE car_sponsor_s_ = 'Fuzzy\\'s Ultra Premium Vodka'",
+    "tuned": "SELECT engine FROM table_2503102_1 WHERE car_sponsor_s_ = 'Fuzzy\\'s Ultra Premium Vodka'"
+  },
+  {
+    "question": "What visiting team played on October 18?",
+    "reference": "SELECT visiting_team FROM table_name_36 WHERE date = \"october 18\"",
+    "base": "SELECT visiting_team FROM table_name_36 WHERE date = 'october 18'",
+    "tuned": "SELECT visiting_team FROM table_name_36 WHERE date = 'october 18'"
+  },
+  {
+    "question": "Name the IHSAA class with county 18 delaware and tigers mascot",
+    "reference": "SELECT ihsaa_class FROM table_name_82 WHERE _number___county = \"18 delaware\" AND mascot = \"tigers\"",
+    "base": "```sql\nSELECT ihsaa_class FROM table_name_82 WHERE _number___county = '18 Delaware' AND mascot = 'tigers';\n```",
+    "tuned": "```sql\nSELECT ihsaa_class FROM table_name_82 WHERE _number___county = '18 Delaware' AND mascot = 'tigers';\n```"
+  },
+  {
+    "question": "When new york 8th is teh district who is the successor?",
+    "reference": "SELECT successor FROM table_2147588_4 WHERE district = \"New York 8th\"",
+    "base": "SELECT successor FROM table_2147588_4 WHERE district = 'New York 8th'",
+    "tuned": "SELECT successor FROM table_2147588_4 WHERE district = 'New York 8th'"
+  },
+  {
+    "question": "What was the venue for Round f?",
+    "reference": "SELECT venue FROM table_name_8 WHERE round = \"f\"",
+    "base": "SELECT venue FROM table_name_8 WHERE round = 'f'",
+    "tuned": "SELECT venue FROM table_name_8 WHERE round = 'f'"
+  },
+  {
+    "question": "Who was the player that was picked at a number less than 205 from the Michigan State Spartans?",
+    "reference": "SELECT player FROM table_name_46 WHERE pick__number < 205 AND team_from = \"michigan state spartans\"",
+    "base": "```sql\nSELECT player FROM table_name_46 WHERE pick__number < '205' AND team_from = 'Michigan State Spartans';\r\n```",
+    "tuned": "```sql\nSELECT player FROM table_name_46 WHERE pick__number < '205' AND team_from = 'Michigan State Spartans';\r\n```"
+  },
+  {
+    "question": "What is the number of gold for the country ranked 19?",
+    "reference": "SELECT SUM(gold) FROM table_name_19 WHERE rank = \"19\"",
+    "base": "SELECT SUM(gold) FROM table_name_19 WHERE rank = '19'",
+    "tuned": "SELECT SUM(gold) FROM table_name_19 WHERE rank = '19'"
+  },
+  {
+    "question": "What was Jos\u00e9 Mar\u00eda Olaz\u00e1bal's score?",
+    "reference": "SELECT to_par FROM table_name_68 WHERE player = \"jos\u00e9 mar\u00eda olaz\u00e1bal\"",
+    "base": "SELECT to_par FROM table_name_68 WHERE player = 'Jos\u00e9 Mar\u00eda Olaz\u00e1bal'",
+    "tuned": "SELECT to_par FROM table_name_68 WHERE player = 'Jos\u00e9 Mar\u00eda Olaz\u00e1bal'"
+  },
+  {
+    "question": "What position does the player from Texas State who was drafted before round 11 with an overall rank lower than 306 play?",
+    "reference": "SELECT position FROM table_name_70 WHERE overall < 306 AND round < 11 AND school_club_team = \"texas state\"",
+    "base": "```sql\nSELECT position FROM table_name_70 WHERE school_club_team = 'Texas State' AND overall < 306 AND round > 11 ORDER BY position LIMIT 1;\n```",
+    "tuned": "```sql\nSELECT position FROM table_name_70 WHERE school_club_team = 'Texas State' AND overall < 306 AND round > 11 ORDER BY position LIMIT 1;\n```"
+  },
+  {
+    "question": "If the song choice is Coba and the order number is 10, what is the result?",
+    "reference": "SELECT result FROM table_22736523_1 WHERE order__number = \"10\" AND song_choice = \"Coba\"",
+    "base": "SELECT result FROM table_22736523_1 WHERE song_choice = 'Coba' AND order__number = '10'",
+    "tuned": "SELECT result FROM table_22736523_1 WHERE song_choice = 'Coba' AND order__number = '10'"
+  },
+  {
+    "question": "Which Total has a Finish of t64, and a Year won larger than 2006?",
+    "reference": "SELECT MAX(total) FROM table_name_64 WHERE finish = \"t64\" AND year_won > 2006",
+    "base": "```sql\nSELECT MAX(total) FROM table_name_64 WHERE finish = 't64' AND year_won > 2006;\n```",
+    "tuned": "```sql\nSELECT MAX(total) FROM table_name_64 WHERE finish = 't64' AND year_won > 2006;\n```"
+  },
+  {
+    "question": "Name the away team score for carlton",
+    "reference": "SELECT away_team AS score FROM table_16388439_3 WHERE home_team = \"Carlton\"",
+    "base": "SELECT away_team FROM table_16388439_3 WHERE home_team = 'Carlton'",
+    "tuned": "SELECT away_team FROM table_16388439_3 WHERE home_team = 'Carlton'"
+  },
+  {
+    "question": "How many goals against total did the team with more than 52 goals and fewer than 10 losses have?",
+    "reference": "SELECT SUM(goals_against) FROM table_name_41 WHERE goals_for > 52 AND losses < 10",
+    "base": "SELECT SUM(goals_against) FROM table_name_41 WHERE goals_for > 52 AND losses < 10",
+    "tuned": "SELECT SUM(goals_against) FROM table_name_41 WHERE goals_for > 52 AND losses < 10"
+  },
+  {
+    "question": "What nationality has a year larger than 2009 with a position of power forward?",
+    "reference": "SELECT nationality FROM table_name_32 WHERE year > 2009 AND position = \"power forward\"",
+    "base": "```sql\nSELECT nationality FROM table_name_32 WHERE year > 2009 AND position = 'power forward';\n```",
+    "tuned": "```sql\nSELECT nationality FROM table_name_32 WHERE year > 2009 AND position = 'power forward';\n```"
+  },
+  {
+    "question": "Show the names of students who have a grade higher than 5 and have at least 2 friends.",
+    "reference": "SELECT T2.name FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id = T2.id WHERE T2.grade > 5 GROUP BY T1.student_id HAVING COUNT(*) >= 2",
+    "base": "```sql\nSELECT T1.name FROM Highschooler AS T1 JOIN Friend AS T2 ON T1.id = T2.student_id WHERE T1.grade > 5 AND COUNT(T2.student_id) >= 2;\r\n```",
+    "tuned": "```sql\nSELECT T1.name FROM Highschooler AS T1 JOIN Friend AS T2 ON T1.id = T2.student_id WHERE T1.grade > 5 AND COUNT(T2.student_id) >= 2;\r\n```"
+  },
+  {
+    "question": "Name the most attendance for game site for los angeles memorial coliseum",
+    "reference": "SELECT MAX(attendance) FROM table_14984103_1 WHERE game_site = \"Los Angeles Memorial Coliseum\"",
+    "base": "SELECT MAX(attendance) AS max_attendance FROM table_14984103_1 WHERE game_site = 'Los Angeles Memorial Coliseum'",
+    "tuned": "SELECT MAX(attendance) AS max_attendance FROM table_14984103_1 WHERE game_site = 'Los Angeles Memorial Coliseum'"
+  },
+  {
+    "question": "Name the number of nat for total g of 6",
+    "reference": "SELECT COUNT(nat) FROM table_22542179_3 WHERE total_g = 6",
+    "base": "SELECT COUNT(nat) FROM table_22542179_3 WHERE total_g = 6",
+    "tuned": "SELECT COUNT(nat) FROM table_22542179_3 WHERE total_g = 6"
+  },
+  {
+    "question": "What was the record on September 22, 1974?",
+    "reference": "SELECT record FROM table_14954150_1 WHERE date = \"September 22, 1974\"",
+    "base": "SELECT record FROM table_14954150_1 WHERE date = 'September 22, 1974'",
+    "tuned": "SELECT record FROM table_14954150_1 WHERE date = 'September 22, 1974'"
+  },
+  {
+    "question": "How many millions of viewers were there for number 6?",
+    "reference": "SELECT us_viewers__millions_ FROM table_19266557_1 WHERE _number = 6",
+    "base": "SELECT CAST(SUBSTRING_INDEX(us_viewers__millions_, ',', -1) AS SIGNED) * 0.001 AS viewers FROM table_19266557_1 WHERE _number = '6'",
+    "tuned": "SELECT CAST(SUBSTRING_INDEX(us_viewers__millions_, ',', -1) AS SIGNED) * 0.001 AS viewers FROM table_19266557_1 WHERE _number = '6'"
+  },
+  {
+    "question": "who is the home team when tie no is less than 7 and the away team is havant & waterlooville?",
+    "reference": "SELECT home_team FROM table_name_24 WHERE tie_no < 7 AND away_team = \"havant & waterlooville\"",
+    "base": "```sql\nSELECT home_team FROM table_name_24 WHERE tie_no < 7 AND away_team = 'Havant & Waterlooville';\n```",
+    "tuned": "```sql\nSELECT home_team FROM table_name_24 WHERE tie_no < 7 AND away_team = 'Havant & Waterlooville';\n```"
+  },
+  {
+    "question": "How many points against did the club with points have?",
+    "reference": "SELECT \"points\" AS _against FROM table_name_21 WHERE \"points\" = \"points\"",
+    "base": "SELECT COUNT(Id) FROM table_name_21 WHERE Id LIKE '%points%'",
+    "tuned": "SELECT COUNT(Id) FROM table_name_21 WHERE Id LIKE '%points%'"
+  },
+  {
+    "question": "Which player is a shooting guard?",
+    "reference": "SELECT player FROM table_name_81 WHERE position = \"shooting guard\"",
+    "base": "SELECT player FROM table_name_81 WHERE position = 'shooting guard'",
+    "tuned": "SELECT player FROM table_name_81 WHERE position = 'shooting guard'"
+  },
+  {
+    "question": "How many blocks are there when the rebounds are fewer than 5.2?",
+    "reference": "SELECT COUNT(blocks) FROM table_name_19 WHERE rebounds < 5.2",
+    "base": "SELECT COUNT(blocks) FROM table_name_19 WHERE rebounds < 5.2",
+    "tuned": "SELECT COUNT(blocks) FROM table_name_19 WHERE rebounds < 5.2"
+  },
+  {
+    "question": "what's the\u00a0airport\u00a0with\u00a0% change 2005/2006\u00a0being 13.0%",
+    "reference": "SELECT airport FROM table_13836704_9 WHERE _percentage_change_2005_2006 = \"13.0%\"",
+    "base": "SELECT airport FROM table_13836704_9 WHERE _percentage_change_2005_2006 = '13.0%'",
+    "tuned": "SELECT airport FROM table_13836704_9 WHERE _percentage_change_2005_2006 = '13.0%'"
+  },
+  {
+    "question": "What league were they in in 2009?",
+    "reference": "SELECT league FROM table_15056103_1 WHERE year = 2009",
+    "base": "SELECT league FROM table_15056103_1 WHERE year = '2009'",
+    "tuned": "SELECT league FROM table_15056103_1 WHERE year = '2009'"
+  },
+  {
+    "question": "When the rider is Garry Mccoy and the manufacturer was Kawasaki, what was the time retired?",
+    "reference": "SELECT time_retired FROM table_name_94 WHERE manufacturer = \"kawasaki\" AND rider = \"garry mccoy\"",
+    "base": "```sql\nSELECT time_retired FROM table_name_94 WHERE rider = 'Garry Mccoy' AND manufacturer = 'Kawasaki';\n```",
+    "tuned": "```sql\nSELECT time_retired FROM table_name_94 WHERE rider = 'Garry Mccoy' AND manufacturer = 'Kawasaki';\n```"
+  },
+  {
+    "question": "Name the least year for goalscore of ortiz and goals more than 25",
+    "reference": "SELECT MIN(year) FROM table_name_81 WHERE top_goalscorer = \"ortiz\" AND goals > 25",
+    "base": "```sql\nSELECT MIN(year) AS least_year FROM table_name_81 WHERE top_goalscorer = 'ortiz' AND goals > 25;\n```",
+    "tuned": "```sql\nSELECT MIN(year) AS least_year FROM table_name_81 WHERE top_goalscorer = 'ortiz' AND goals > 25;\n```"
+  },
+  {
+    "question": "Who is the Home Team for Match No. 23?",
+    "reference": "SELECT home_team FROM table_name_42 WHERE match_no = \"23\"",
+    "base": "```sql\nSELECT home_team FROM table_name_42 WHERE match_no = '23';\n```",
+    "tuned": "```sql\nSELECT home_team FROM table_name_42 WHERE match_no = '23';\n```"
+  },
+  {
+    "question": "Name the largest ethnic group for kosan\u010di\u0107",
+    "reference": "SELECT largest_ethnic_group__2002_ FROM table_2562572_20 WHERE settlement = \"Kosan\u010di\u0107\"",
+    "base": "SELECT largest_ethnic_group__2002_ FROM table_2562572_20 WHERE settlement = 'kosan\u010di\u0107'",
+    "tuned": "SELECT largest_ethnic_group__2002_ FROM table_2562572_20 WHERE settlement = 'kosan\u010di\u0107'"
+  },
+  {
+    "question": "what is the soap opera when the duration is 18 years and the character is miley byrne?",
+    "reference": "SELECT soap_opera FROM table_name_4 WHERE duration = \"18 years\" AND character = \"miley byrne\"",
+    "base": "SELECT soap_opera FROM table_name_4 WHERE duration = '18 years' AND character = 'miley byrne'",
+    "tuned": "SELECT soap_opera FROM table_name_4 WHERE duration = '18 years' AND character = 'miley byrne'"
+  },
+  {
+    "question": "How many different positions did Sherbrooke Faucons (qmjhl) provide in the draft?",
+    "reference": "SELECT COUNT(position) FROM table_1013129_2 WHERE college_junior_club_team = \"Sherbrooke Faucons (QMJHL)\"",
+    "base": "SELECT COUNT(DISTINCT position) FROM table_1013129_2 WHERE college_junior_club_team = 'Sherbrooke Faucons (qmjhl)'",
+    "tuned": "SELECT COUNT(DISTINCT position) FROM table_1013129_2 WHERE college_junior_club_team = 'Sherbrooke Faucons (qmjhl)'"
+  },
+  {
+    "question": "What's the highest draw with over 60 points for paul duffy?",
+    "reference": "SELECT MAX(draw) FROM table_name_40 WHERE points > 60 AND artist = \"paul duffy\"",
+    "base": "```sql\nSELECT MAX(draw) AS highest_draw\r\nFROM table_name_40\r\nWHERE points > 60 AND artist = 'paul duffy';\r\n```",
+    "tuned": "```sql\nSELECT MAX(draw) AS highest_draw\r\nFROM table_name_40\r\nWHERE points > 60 AND artist = 'paul duffy';\r\n```"
+  },
+  {
+    "question": "What is the timeslot rank when the rating is smaller than 2.6 and the share is more than 4?",
+    "reference": "SELECT AVG(rank__timeslot_) FROM table_name_97 WHERE rating < 2.6 AND share > 4",
+    "base": "```sql\nSELECT AVG(rank__timeslot_) AS average_rank FROM table_name_97 WHERE rating < 2.6 AND share > 4;\n```",
+    "tuned": "```sql\nSELECT AVG(rank__timeslot_) AS average_rank FROM table_name_97 WHERE rating < 2.6 AND share > 4;\n```"
+  },
+  {
+    "question": "What was the placing of the nation of East Germany?",
+    "reference": "SELECT COUNT(placings) FROM table_name_92 WHERE nation = \"east germany\"",
+    "base": "SELECT placings FROM table_name_92 WHERE nation = 'East Germany'",
+    "tuned": "SELECT placings FROM table_name_92 WHERE nation = 'East Germany'"
+  },
+  {
+    "question": "Who had the high rebound total on january 6?",
+    "reference": "SELECT high_rebounds FROM table_17140608_7 WHERE date = \"January 6\"",
+    "base": "SELECT high_rebounds FROM table_17140608_7 WHERE date = 'january 6'",
+    "tuned": "SELECT high_rebounds FROM table_17140608_7 WHERE date = 'january 6'"
+  },
+  {
+    "question": "What's the song of artist liam reilly?",
+    "reference": "SELECT song FROM table_name_8 WHERE artist = \"liam reilly\"",
+    "base": "SELECT song FROM table_name_8 WHERE artist = 'liam reilly'",
+    "tuned": "SELECT song FROM table_name_8 WHERE artist = 'liam reilly'"
+  },
+  {
+    "question": "Name the agg for team 2 of asl sport guyanais.",
+    "reference": "SELECT agg FROM table_name_34 WHERE team_2 = \"asl sport guyanais\"",
+    "base": "```sql\nSELECT agg FROM table_name_34 WHERE team_2 = 'asl sport guyana' AND sport = 'guyana';\n```",
+    "tuned": "```sql\nSELECT agg FROM table_name_34 WHERE team_2 = 'asl sport guyana' AND sport = 'guyana';\n```"
+  },
+  {
+    "question": "Which Government has 57 seats?",
+    "reference": "SELECT government FROM table_name_56 WHERE seats = 57",
+    "base": "SELECT government FROM table_name_56 WHERE seats = '57'",
+    "tuned": "SELECT government FROM table_name_56 WHERE seats = '57'"
+  },
+  {
+    "question": "Which 2011 is the lowest one that has a 1948 smaller than 15872624, and a 1966 of 263103, and a 1992 larger than 266308?",
+    "reference": "SELECT MIN(2011) FROM table_name_81 WHERE 1948 < 15872624 AND 1966 = 263103 AND 1992 > 266308",
+    "base": "```sql\nSELECT MIN(`Id`) AS \"Lowest 2011\"\nFROM table_name_81\nWHERE `1948` < 15872624 AND `1966` = 263103 AND `1992` > 266308;\n```",
+    "tuned": "```sql\nSELECT MIN(`Id`) AS \"Lowest 2011\"\nFROM table_name_81\nWHERE `1948` < 15872624 AND `1966` = 263103 AND `1992` > 266308;\n```"
+  },
+  {
+    "question": "Name the most female life expectancy for djibouti",
+    "reference": "SELECT MAX(female_life_expectancy) FROM table_2701625_1 WHERE country = \"Djibouti\"",
+    "base": "SELECT MAX(female_life_expectancy) AS max_female_life_expectancy FROM table_2701625_1 WHERE country = 'Djibouti'",
+    "tuned": "SELECT MAX(female_life_expectancy) AS max_female_life_expectancy FROM table_2701625_1 WHERE country = 'Djibouti'"
+  },
+  {
+    "question": "Which To par has a Total larger than 283, and a Finish of t12?",
+    "reference": "SELECT to_par FROM table_name_28 WHERE total > 283 AND finish = \"t12\"",
+    "base": "```sql\nSELECT to_par FROM table_name_28 WHERE total > 283 AND finish = 't12';\n```",
+    "tuned": "```sql\nSELECT to_par FROM table_name_28 WHERE total > 283 AND finish = 't12';\n```"
+  },
+  {
+    "question": "What driving wheels are on the m1 original NER class?",
+    "reference": "SELECT driving_wheels FROM table_name_8 WHERE original_ner_class = \"m1\"",
+    "base": "SELECT driving_wheels FROM table_name_8 WHERE original_ner_class = 'm1'",
+    "tuned": "SELECT driving_wheels FROM table_name_8 WHERE original_ner_class = 'm1'"
+  },
+  {
+    "question": "Which Record has an Event of tpf 5: stars and strikes?",
+    "reference": "SELECT record FROM table_name_21 WHERE event = \"tpf 5: stars and strikes\"",
+    "base": "```sql\nSELECT record FROM table_name_21 WHERE event = 'tpf 5: stars and strikes';\n```",
+    "tuned": "```sql\nSELECT record FROM table_name_21 WHERE event = 'tpf 5: stars and strikes';\n```"
+  },
+  {
+    "question": "What is the date of the away game in week 8?",
+    "reference": "SELECT date FROM table_name_2 WHERE home_away_game = \"away\" AND week = 8",
+    "base": "SELECT date FROM table_name_2 WHERE home_away_game = 'away' AND week = 8",
+    "tuned": "SELECT date FROM table_name_2 WHERE home_away_game = 'away' AND week = 8"
+  },
+  {
+    "question": "In which year was the Pick #46?",
+    "reference": "SELECT draft FROM table_name_9 WHERE pick = \"46\"",
+    "base": "SELECT draft FROM table_name_9 WHERE pick = 'Pick #46'",
+    "tuned": "SELECT draft FROM table_name_9 WHERE pick = 'Pick #46'"
+  },
+  {
+    "question": "Name the result for willis alston",
+    "reference": "SELECT result FROM table_2668243_18 WHERE incumbent = \"Willis Alston\"",
+    "base": "SELECT result FROM table_2668243_18 WHERE incumbent = 'willis alston'",
+    "tuned": "SELECT result FROM table_2668243_18 WHERE incumbent = 'willis alston'"
+  },
+  {
+    "question": "What was the score of the game when the record was 32\u201319\u20137?",
+    "reference": "SELECT score FROM table_name_40 WHERE record = \"32\u201319\u20137\"",
+    "base": "SELECT score FROM table_name_40 WHERE record = '32-19--7'",
+    "tuned": "SELECT score FROM table_name_40 WHERE record = '32-19--7'"
+  },
+  {
+    "question": "What is the copa libertadores 1996 result of the team with a copa conmebol 1996 result of quarterfinals?",
+    "reference": "SELECT copa_libertadores_1996 FROM table_name_84 WHERE copa_conmebol_1996 = \"quarterfinals\"",
+    "base": "SELECT copa_libertadores_1996 FROM table_name_84 WHERE copa_conmebol_1996 = 'quarterfinals'",
+    "tuned": "SELECT copa_libertadores_1996 FROM table_name_84 WHERE copa_conmebol_1996 = 'quarterfinals'"
+  },
+  {
+    "question": "what is the number of different channel owners?",
+    "reference": "SELECT COUNT(DISTINCT OWNER) FROM channel",
+    "base": "SELECT COUNT(DISTINCT OWNER) FROM channel;",
+    "tuned": "SELECT COUNT(DISTINCT OWNER) FROM channel;"
+  },
+  {
+    "question": "What is the average number of international passengers of all airports?",
+    "reference": "SELECT AVG(International_Passengers) FROM airport",
+    "base": "SELECT AVG(International_Passengers) AS Average_International_Passengers FROM airport;",
+    "tuned": "SELECT AVG(International_Passengers) AS Average_International_Passengers FROM airport;"
+  },
+  {
+    "question": "What is the notes of the transmission on channel bbc four and a time of 22:30?",
+    "reference": "SELECT notes FROM table_name_15 WHERE channel = \"bbc four\" AND time = \"22:30\"",
+    "base": "SELECT notes FROM table_name_15 WHERE channel = 'bbc four' AND time = '22:30'",
+    "tuned": "SELECT notes FROM table_name_15 WHERE channel = 'bbc four' AND time = '22:30'"
+  },
+  {
+    "question": "Which player has a score of 71-69-71-67=278?",
+    "reference": "SELECT player FROM table_name_81 WHERE score = 71 - 69 - 71 - 67 = 278",
+    "base": "SELECT player FROM table_name_81 WHERE score = '278'",
+    "tuned": "SELECT player FROM table_name_81 WHERE score = '278'"
+  },
+  {
+    "question": "What's the record of Game 56?",
+    "reference": "SELECT record FROM table_name_37 WHERE game = 56",
+    "base": "SELECT record FROM table_name_37 WHERE game = '56'",
+    "tuned": "SELECT record FROM table_name_37 WHERE game = '56'"
+  },
+  {
+    "question": "What did the home team score when the away team was South Melbourne?",
+    "reference": "SELECT home_team AS score FROM table_name_31 WHERE away_team = \"south melbourne\"",
+    "base": "SELECT home_team AS score FROM table_name_31 WHERE away_team = 'South Melbourne'",
+    "tuned": "SELECT home_team AS score FROM table_name_31 WHERE away_team = 'South Melbourne'"
+  },
+  {
+    "question": "What is the sum for the pick of the year 2009, and a round smaller than 2 and an NBA Club Denver Nuggets?",
+    "reference": "SELECT SUM(pick) FROM table_name_95 WHERE year = 2009 AND round < 2 AND nba_club = \"denver nuggets\"",
+    "base": "SELECT SUM(pick) FROM table_name_95 WHERE year = '2009' AND round < 2 AND nba_club = 'Denver Nuggets'",
+    "tuned": "SELECT SUM(pick) FROM table_name_95 WHERE year = '2009' AND round < 2 AND nba_club = 'Denver Nuggets'"
+  },
+  {
+    "question": "What's the season that had a lost of 9 with 72 games?",
+    "reference": "SELECT season FROM table_name_10 WHERE games = \"72\" AND lost = \"9\"",
+    "base": "SELECT season FROM table_name_10 WHERE lost = 9 AND games = 72",
+    "tuned": "SELECT season FROM table_name_10 WHERE lost = 9 AND games = 72"
+  },
+  {
+    "question": "What shows for 2005 when 2002 shows 0\u20131?",
+    "reference": "SELECT 2005 FROM table_name_16 WHERE 2002 = \"0\u20131\"",
+    "base": "SELECT Id FROM table_name_16 WHERE YEAR = '2005' AND Id LIKE '%2002%' AND SUBSTRING(Id, 7, 3) = '0-1'",
+    "tuned": "SELECT Id FROM table_name_16 WHERE YEAR = '2005' AND Id LIKE '%2002%' AND SUBSTRING(Id, 7, 3) = '0-1'"
+  },
+  {
+    "question": "How many hometowns does the catcher have?",
+    "reference": "SELECT COUNT(hometown) FROM table_11677100_15 WHERE position = \"Catcher\"",
+    "base": "SELECT COUNT(DISTINCT hometown) FROM table_11677100_15 WHERE position = 'catcher'",
+    "tuned": "SELECT COUNT(DISTINCT hometown) FROM table_11677100_15 WHERE position = 'catcher'"
+  },
+  {
+    "question": "Name the date with catalog of alca-9198",
+    "reference": "SELECT date FROM table_name_66 WHERE catalog = \"alca-9198\"",
+    "base": "SELECT date FROM table_name_66 WHERE catalog = 'alca-9198'",
+    "tuned": "SELECT date FROM table_name_66 WHERE catalog = 'alca-9198'"
+  },
+  {
+    "question": "Which Stage has a Winner of jeremy hunt?",
+    "reference": "SELECT stage FROM table_name_21 WHERE winner = \"jeremy hunt\"",
+    "base": "SELECT stage FROM table_name_21 WHERE winner = \"jeremy hunt\"",
+    "tuned": "SELECT stage FROM table_name_21 WHERE winner = \"jeremy hunt\""
+  },
+  {
+    "question": "Which Channel has an Opponent of washington redskins?",
+    "reference": "SELECT channel FROM table_name_41 WHERE opponent = \"washington redskins\"",
+    "base": "SELECT channel FROM table_name_41 WHERE opponent = 'washington redskins'",
+    "tuned": "SELECT channel FROM table_name_41 WHERE opponent = 'washington redskins'"
+  },
+  {
+    "question": "How many starts have a year prior to 2012, and team penske as the team, with a finish greater than 27?",
+    "reference": "SELECT SUM(start) FROM table_name_35 WHERE year < 2012 AND team = \"team penske\" AND finish > 27",
+    "base": "```sql\nSELECT COUNT(start) FROM table_name_35 WHERE year < '2012' AND team = 'penske' AND finish > 27;\n```",
+    "tuned": "```sql\nSELECT COUNT(start) FROM table_name_35 WHERE year < '2012' AND team = 'penske' AND finish > 27;\n```"
+  },
+  {
+    "question": "what's the\u00a0country\u00a0with\u00a0highest monthly inflation rate\u00a0being 3.13 \u00d7 10 8 %",
+    "reference": "SELECT country FROM table_13681_2 WHERE highest_monthly_inflation_rate = \"3.13 \u00d7 10 8 %\"",
+    "base": "SELECT country FROM table_13681_2 WHERE highest_monthly_inflation_rate = '3.13 \u00d7 10^8%'",
+    "tuned": "SELECT country FROM table_13681_2 WHERE highest_monthly_inflation_rate = '3.13 \u00d7 10^8%'"
+  },
+  {
+    "question": "What are all the languages for tsotsi?",
+    "reference": "SELECT language_s_ FROM table_13700749_1 WHERE film_title = \"Tsotsi\"",
+    "base": "SELECT language_s_ FROM table_13700749_1 WHERE film_title = 'tsotsi'",
+    "tuned": "SELECT language_s_ FROM table_13700749_1 WHERE film_title = 'tsotsi'"
+  },
+  {
+    "question": "How many reactions have an Athlete of alleyne francique, and a Lane larger than 9?",
+    "reference": "SELECT COUNT(react) FROM table_name_24 WHERE athlete = \"alleyne francique\" AND lane > 9",
+    "base": "SELECT COUNT(react) FROM table_name_24 WHERE athlete = 'alleyne francique' AND lane > 9",
+    "tuned": "SELECT COUNT(react) FROM table_name_24 WHERE athlete = 'alleyne francique' AND lane > 9"
+  },
+  {
+    "question": "What district did Dave Treen serve?",
+    "reference": "SELECT district FROM table_1341663_19 WHERE incumbent = \"Dave Treen\"",
+    "base": "SELECT district FROM table_1341663_19 WHERE incumbent = 'Dave Treen'",
+    "tuned": "SELECT district FROM table_1341663_19 WHERE incumbent = 'Dave Treen'"
+  },
+  {
+    "question": "What company makes the Nokia 700?",
+    "reference": "SELECT company_name FROM table_name_31 WHERE hardware_model = \"nokia 700\"",
+    "base": "SELECT company_name FROM table_name_31 WHERE hardware_model = 'Nokia 700'",
+    "tuned": "SELECT company_name FROM table_name_31 WHERE hardware_model = 'Nokia 700'"
+  },
+  {
+    "question": "Can you tell me the sum of Swing to gain that has Constituency of caithness, sutherland and easter ross?",
+    "reference": "SELECT SUM(swing_to_gain) FROM table_name_48 WHERE constituency = \"caithness, sutherland and easter ross\"",
+    "base": "SELECT SUM(swing_to_gain) FROM table_name_48 WHERE constituency IN ('caithness', 'sutherland', 'easter ross')",
+    "tuned": "SELECT SUM(swing_to_gain) FROM table_name_48 WHERE constituency IN ('caithness', 'sutherland', 'easter ross')"
+  },
+  {
+    "question": "Who was the finalist in the season 2007-08?",
+    "reference": "SELECT finalist FROM table_19651669_1 WHERE season = \"2007-08\"",
+    "base": "SELECT finalist FROM table_19651669_1 WHERE season = '2007-08'",
+    "tuned": "SELECT finalist FROM table_19651669_1 WHERE season = '2007-08'"
+  },
+  {
+    "question": "Callsign of 6nan has what purpose?",
+    "reference": "SELECT purpose FROM table_name_34 WHERE callsign = \"6nan\"",
+    "base": "SELECT purpose FROM table_name_34 WHERE callsign = '6nan'",
+    "tuned": "SELECT purpose FROM table_name_34 WHERE callsign = '6nan'"
+  },
+  {
+    "question": "What School or Club team has an overall score of 21?",
+    "reference": "SELECT school_club_team FROM table_name_15 WHERE overall = 21",
+    "base": "SELECT school_club_team FROM table_name_15 WHERE overall = '21'",
+    "tuned": "SELECT school_club_team FROM table_name_15 WHERE overall = '21'"
+  },
+  {
+    "question": "What is the province amount if the % 2011 is 0.0%",
+    "reference": "SELECT COUNT(province) FROM table_1939367_1 WHERE _percentage_2011 = \"0.0%\"",
+    "base": "SELECT province FROM table_1939367_1 WHERE _percentage_2011 = '0.0%'",
+    "tuned": "SELECT province FROM table_1939367_1 WHERE _percentage_2011 = '0.0%'"
+  },
+  {
+    "question": "What year is guard Mario Chalmers?",
+    "reference": "SELECT year FROM table_name_53 WHERE position = \"guard\" AND name = \"mario chalmers\"",
+    "base": "SELECT year FROM table_name_53 WHERE position = 'guard' AND name = 'Mario Chalmers'",
+    "tuned": "SELECT year FROM table_name_53 WHERE position = 'guard' AND name = 'Mario Chalmers'"
+  },
+  {
+    "question": "Name the 2007 for 2005 of a and 003 of a with 2009 of sf",
+    "reference": "SELECT 2007 FROM table_name_17 WHERE 2005 = \"a\" AND 2003 = \"a\" AND 2009 = \"sf\"",
+    "base": "SELECT Id FROM table_name_17 WHERE YEAR = '2007' AND Id LIKE 'a%003%' AND YEAR = '2009'",
+    "tuned": "SELECT Id FROM table_name_17 WHERE YEAR = '2007' AND Id LIKE 'a%003%' AND YEAR = '2009'"
+  },
+  {
+    "question": "How many silver medals did the country that won 20 gold medals win in the 1955 Pan American Games?",
+    "reference": "SELECT SUM(silver) FROM table_name_62 WHERE gold = 20",
+    "base": "SELECT SUM(silver) FROM table_name_62 WHERE gold = '20' AND YEAR(gold) = 1955",
+    "tuned": "SELECT SUM(silver) FROM table_name_62 WHERE gold = '20' AND YEAR(gold) = 1955"
+  },
+  {
+    "question": "Which regular season had the playoffs of 0 mls cups?",
+    "reference": "SELECT regular_season FROM table_name_87 WHERE playoffs = \"0 mls cups\"",
+    "base": "SELECT regular_season FROM table_name_87 WHERE playoffs = '0'",
+    "tuned": "SELECT regular_season FROM table_name_87 WHERE playoffs = '0'"
+  },
+  {
+    "question": "Can you tell me the lowest Total natches that has the Points won of 3, and the Year of 1994?",
+    "reference": "SELECT MIN(total_matches) FROM table_name_11 WHERE points_won = 3 AND year = \"1994\"",
+    "base": "```sql\nSELECT MIN(total_matches) AS min_total_matches, year\nFROM table_name_11\nWHERE points_won = '3' AND year = '1994';\n```",
+    "tuned": "```sql\nSELECT MIN(total_matches) AS min_total_matches, year\nFROM table_name_11\nWHERE points_won = '3' AND year = '1994';\n```"
+  },
+  {
+    "question": "What was the episode number for the episode viewed by 5.68 million viewers?",
+    "reference": "SELECT season_episode FROM table_27987623_1 WHERE us_viewers__in_million_ = \"5.68\"",
+    "base": "SELECT season_episode FROM table_27987623_1 WHERE us_viewers__in_million_ = '5.68'",
+    "tuned": "SELECT season_episode FROM table_27987623_1 WHERE us_viewers__in_million_ = '5.68'"
+  },
+  {
+    "question": "What was the round for Villa Park?",
+    "reference": "SELECT round FROM table_name_85 WHERE venue = \"villa park\"",
+    "base": "SELECT round FROM table_name_85 WHERE venue = 'villa park'",
+    "tuned": "SELECT round FROM table_name_85 WHERE venue = 'villa park'"
+  },
+  {
+    "question": "What is the title of production code 514?",
+    "reference": "SELECT title FROM table_11630008_7 WHERE production_code = 514",
+    "base": "SELECT title FROM table_11630008_7 WHERE production_code = '514'",
+    "tuned": "SELECT title FROM table_11630008_7 WHERE production_code = '514'"
+  },
+  {
+    "question": "Name the number of poles for fastest laps being 6",
+    "reference": "SELECT COUNT(poles) FROM table_2725949_6 WHERE fastest_laps = 6",
+    "base": "SELECT COUNT(poles) FROM table_2725949_6 WHERE fastest_laps = '6'",
+    "tuned": "SELECT COUNT(poles) FROM table_2725949_6 WHERE fastest_laps = '6'"
+  },
+  {
+    "question": "What position does alun wyn jones play?",
+    "reference": "SELECT position FROM table_name_59 WHERE player = \"alun wyn jones\"",
+    "base": "SELECT position FROM table_name_59 WHERE player = 'alun wyn jones'",
+    "tuned": "SELECT position FROM table_name_59 WHERE player = 'alun wyn jones'"
+  },
+  {
+    "question": "Which city's IATA is KUL?",
+    "reference": "SELECT city FROM table_name_50 WHERE iata = \"kul\"",
+    "base": "SELECT city FROM table_name_50 WHERE iata = 'KUL'",
+    "tuned": "SELECT city FROM table_name_50 WHERE iata = 'KUL'"
+  },
+  {
+    "question": "When bill young redistricted from the 10th district is the incumbent what is the party?",
+    "reference": "SELECT party FROM table_25030512_12 WHERE incumbent = \"Bill Young Redistricted from the 10th district\"",
+    "base": "SELECT party FROM table_25030512_12 WHERE incumbent = 'Bill Young' AND party IS NOT NULL AND substring_index(incumbent, ' ', -1) = '10th';",
+    "tuned": "SELECT party FROM table_25030512_12 WHERE incumbent = 'Bill Young' AND party IS NOT NULL AND substring_index(incumbent, ' ', -1) = '10th';"
+  },
+  {
+    "question": "What language did the word that means mahjong first come from?",
+    "reference": "SELECT source_language FROM table_name_28 WHERE meaning = \"mahjong\"",
+    "base": "SELECT source_language FROM table_name_28 WHERE meaning = 'mahjong'",
+    "tuned": "SELECT source_language FROM table_name_28 WHERE meaning = 'mahjong'"
+  },
+  {
+    "question": "Who was the away team playing at Carlton?",
+    "reference": "SELECT away_team FROM table_16387653_1 WHERE home_team = \"Carlton\"",
+    "base": "```sql\nSELECT away_team FROM table_16387653_1 WHERE home_team = 'Carlton';\n```",
+    "tuned": "```sql\nSELECT away_team FROM table_16387653_1 WHERE home_team = 'Carlton';\n```"
+  },
+  {
+    "question": "What region is the city of Philadelphia located in?",
+    "reference": "SELECT region FROM table_name_16 WHERE city = \"philadelphia\"",
+    "base": "SELECT region FROM table_name_16 WHERE city = 'Philadelphia'",
+    "tuned": "SELECT region FROM table_name_16 WHERE city = 'Philadelphia'"
+  },
+  {
+    "question": "What is the English character for Lin Ming Kuan (\u6797\u660e\u5bec)?",
+    "reference": "SELECT english FROM table_name_88 WHERE character = \"lin ming kuan (\u6797\u660e\u5bec)\"",
+    "base": "SELECT english FROM table_name_88 WHERE character = '\u6797\u660e\u5bec'",
+    "tuned": "SELECT english FROM table_name_88 WHERE character = '\u6797\u660e\u5bec'"
+  },
+  {
+    "question": "Which school year was the Class AAA dalhart and the class AAAAA edinburg?",
+    "reference": "SELECT school_year FROM table_name_73 WHERE class_aAA = dalhart AND class_aAAAA = edinburg",
+    "base": "```sql\nSELECT school_year FROM table_name_73 WHERE dalhart = 'Class AAA' AND edinburg = 'Class AAAAA';\n```",
+    "tuned": "```sql\nSELECT school_year FROM table_name_73 WHERE dalhart = 'Class AAA' AND edinburg = 'Class AAAAA';\n```"
+  },
+  {
+    "question": "Who had highest assists at the game against Houston?",
+    "reference": "SELECT high_assists FROM table_27700530_11 WHERE team = \"Houston\"",
+    "base": "SELECT high_assists FROM table_27700530_11 WHERE team = 'Houston' ORDER BY high_assists DESC LIMIT 1",
+    "tuned": "SELECT high_assists FROM table_27700530_11 WHERE team = 'Houston' ORDER BY high_assists DESC LIMIT 1"
+  },
+  {
+    "question": "What is the sum of silver medals of the nation Cuba, which has less than 0 gold?",
+    "reference": "SELECT SUM(silver) FROM table_name_7 WHERE nation = \"cuba\" AND gold < 0",
+    "base": "SELECT SUM(silver) FROM table_name_7 WHERE nation = 'Cuba' AND gold < 0",
+    "tuned": "SELECT SUM(silver) FROM table_name_7 WHERE nation = 'Cuba' AND gold < 0"
+  },
+  {
+    "question": "What is the donor payment in Belgium?",
+    "reference": "SELECT donor_payment FROM table_16175217_1 WHERE country = \"Belgium\"",
+    "base": "SELECT donor_payment FROM table_16175217_1 WHERE country = 'Belgium'",
+    "tuned": "SELECT donor_payment FROM table_16175217_1 WHERE country = 'Belgium'"
+  },
+  {
+    "question": "What was the result of the election featuring ike skelton?",
+    "reference": "SELECT result FROM table_1341604_26 WHERE incumbent = \"Ike Skelton\"",
+    "base": "SELECT result FROM table_1341604_26 WHERE incumbent = 'ike skelton'",
+    "tuned": "SELECT result FROM table_1341604_26 WHERE incumbent = 'ike skelton'"
+  },
+  {
+    "question": "What is the notion when the crystal structure is tetragonal and the formula is bi 2 sr 2 cacu 2 o 8",
+    "reference": "SELECT notation FROM table_101336_1 WHERE crystal_structure = \"Tetragonal\" AND formula = \"Bi 2 Sr 2 CaCu 2 O 8\"",
+    "base": "```sql\nSELECT notation FROM table_101336_1 WHERE crystal_structure = 'tetragonal' AND formula = 'bi2sr2cacu2o8';\r\n```",
+    "tuned": "```sql\nSELECT notation FROM table_101336_1 WHERE crystal_structure = 'tetragonal' AND formula = 'bi2sr2cacu2o8';\r\n```"
+  },
+  {
+    "question": "Who played in Maryland the same year that Deep Run Valley LL Hilltown played in Pennsylvania?",
+    "reference": "SELECT maryland FROM table_13012165_1 WHERE pennsylvania = \"Deep Run Valley LL Hilltown\"",
+    "base": "SELECT maryland FROM table_13012165_1 WHERE pennsylvania = 'Deep Run Valley LL Hilltown'",
+    "tuned": "SELECT maryland FROM table_13012165_1 WHERE pennsylvania = 'Deep Run Valley LL Hilltown'"
+  },
+  {
+    "question": "Which place has points larger than 1, a bmw machine, and a time of 1:18.47.6?",
+    "reference": "SELECT MIN(place) FROM table_name_44 WHERE points > 1 AND machine = \"bmw\" AND time = \"1:18.47.6\"",
+    "base": "```sql\nSELECT AVG(points) AS average_points\r\nFROM table_name_44\r\nWHERE points > '1'\r\nAND machine = 'bmw'\r\nAND time = '1:18.47.6';\r\n```",
+    "tuned": "```sql\nSELECT AVG(points) AS average_points\r\nFROM table_name_44\r\nWHERE points > '1'\r\nAND machine = 'bmw'\r\nAND time = '1:18.47.6';\r\n```"
+  },
+  {
+    "question": "What is the partnership in the game with 166* runs and an opponent of Namibia?",
+    "reference": "SELECT partnerships FROM table_name_17 WHERE versus = \"namibia\" AND runs = \"166*\"",
+    "base": "SELECT partnerships FROM table_name_17 WHERE runs = \"166*\" AND versus = \"Namibia\"",
+    "tuned": "SELECT partnerships FROM table_name_17 WHERE runs = \"166*\" AND versus = \"Namibia\""
+  },
+  {
+    "question": "For what country is the skip Andy Kapp?",
+    "reference": "SELECT country FROM table_name_49 WHERE skip = \"andy kapp\"",
+    "base": "SELECT country FROM table_name_49 WHERE skip = 'Andy Kapp'",
+    "tuned": "SELECT country FROM table_name_49 WHERE skip = 'Andy Kapp'"
+  },
+  {
+    "question": "Which Year(s) won has a To par of +8?",
+    "reference": "SELECT year_s__won FROM table_name_65 WHERE to_par = \"+8\"",
+    "base": "```sql\nSELECT year_s__won FROM table_name_65 WHERE to_par = '+8';\n```",
+    "tuned": "```sql\nSELECT year_s__won FROM table_name_65 WHERE to_par = '+8';\n```"
+  },
+  {
+    "question": "What is the starting point of the route that has its terminus at Ecat/Rosa Park Transit Center?",
+    "reference": "SELECT starting_point FROM table_name_27 WHERE terminus = \"ecat/rosa park transit center\"",
+    "base": "SELECT starting_point FROM table_name_27 WHERE terminus = 'Ecat/Rosa Park Transit Center'",
+    "tuned": "SELECT starting_point FROM table_name_27 WHERE terminus = 'Ecat/Rosa Park Transit Center'"
+  },
+  {
+    "question": "How many areas are named West Isles? ",
+    "reference": "SELECT COUNT(area_km_2) FROM table_170969_2 WHERE official_name = \"West Isles\"",
+    "base": "SELECT COUNT(area_km_2) FROM table_170969_2 WHERE official_name = 'West Isles'",
+    "tuned": "SELECT COUNT(area_km_2) FROM table_170969_2 WHERE official_name = 'West Isles'"
+  },
+  {
+    "question": "What is Home Team, when Date is \"1 February 1984\", and when Tie No is \"5\"?",
+    "reference": "SELECT home_team FROM table_name_30 WHERE date = \"1 february 1984\" AND tie_no = \"5\"",
+    "base": "```sql\nSELECT home_team FROM table_name_30 WHERE date = '1 February 1984' AND tie_no = '5';\n```",
+    "tuned": "```sql\nSELECT home_team FROM table_name_30 WHERE date = '1 February 1984' AND tie_no = '5';\n```"
+  },
+  {
+    "question": "In which city is the network latv licensed?",
+    "reference": "SELECT city_of_license FROM table_name_93 WHERE network = \"latv\"",
+    "base": "SELECT city_of_license FROM table_name_93 WHERE network = 'latv'",
+    "tuned": "SELECT city_of_license FROM table_name_93 WHERE network = 'latv'"
+  },
+  {
+    "question": "What was the final score of the game against shingo kunieda maikel scheffers when robin ammerlaan was Ronald Vink's partner?",
+    "reference": "SELECT score_in_final FROM table_name_86 WHERE partnering = \"robin ammerlaan\" AND opponents_in_final = \"shingo kunieda maikel scheffers\"",
+    "base": "SELECT score_in_final FROM table_name_86 WHERE partnering = 'robin ammerlaan' AND opponents_in_final = 'shingo kunieda mikel scheffers' AND partnering = 'ronald vink'",
+    "tuned": "SELECT score_in_final FROM table_name_86 WHERE partnering = 'robin ammerlaan' AND opponents_in_final = 'shingo kunieda mikel scheffers' AND partnering = 'ronald vink'"
+  },
+  {
+    "question": "Can you tell me the Record that has the Game of 19?",
+    "reference": "SELECT record FROM table_name_72 WHERE game = 19",
+    "base": "SELECT record FROM table_name_72 WHERE game = '19'",
+    "tuned": "SELECT record FROM table_name_72 WHERE game = '19'"
+  },
+  {
+    "question": "What was the average attendance when the decision was price and montreal were the visitors?",
+    "reference": "SELECT AVG(attendance) FROM table_name_58 WHERE visitor = \"montreal\" AND decision = \"price\"",
+    "base": "SELECT AVG(attendance) FROM table_name_58 WHERE decision = 'price' AND visitor LIKE '%montreal%'",
+    "tuned": "SELECT AVG(attendance) FROM table_name_58 WHERE decision = 'price' AND visitor LIKE '%montreal%'"
+  },
+  {
+    "question": "What is the number of draws when played is smaller than 30?",
+    "reference": "SELECT COUNT(draws) FROM table_name_74 WHERE played < 30",
+    "base": "SELECT COUNT(draws) FROM table_name_74 WHERE played < 30",
+    "tuned": "SELECT COUNT(draws) FROM table_name_74 WHERE played < 30"
+  },
+  {
+    "question": "what is the mascot of st. paul's school? ",
+    "reference": "SELECT mascot FROM table_2439728_1 WHERE school = \"St. Paul's school\"",
+    "base": "SELECT mascot FROM table_2439728_1 WHERE school = 'St. Paul\\'s'",
+    "tuned": "SELECT mascot FROM table_2439728_1 WHERE school = 'St. Paul\\'s'"
+  },
+  {
+    "question": "What is the total Level with 27 Apps after 2006?",
+    "reference": "SELECT SUM(level) FROM table_name_90 WHERE apps = 27 AND season > 2006",
+    "base": "SELECT AVG(level) FROM table_name_90 WHERE apps = 27 AND season > '2006'",
+    "tuned": "SELECT AVG(level) FROM table_name_90 WHERE apps = 27 AND season > '2006'"
+  },
+  {
+    "question": "What was the surface where the opponent was Nathalie Dechy Meilen Tu?",
+    "reference": "SELECT surface FROM table_name_63 WHERE opponent_in_the_final = \"nathalie dechy meilen tu\"",
+    "base": "SELECT surface FROM table_name_63 WHERE opponent_in_the_final = \"nathalie dechy meilen tu\"",
+    "tuned": "SELECT surface FROM table_name_63 WHERE opponent_in_the_final = \"nathalie dechy meilen tu\""
+  },
+  {
+    "question": "What week's game had a result of l 35\u201337?",
+    "reference": "SELECT week FROM table_name_88 WHERE result = \"l 35\u201337\"",
+    "base": "SELECT week FROM table_name_88 WHERE result = 'l 35-37'",
+    "tuned": "SELECT week FROM table_name_88 WHERE result = 'l 35-37'"
+  },
+  {
+    "question": "Which School/ Club Team acquired Jondan Salvador via trade?",
+    "reference": "SELECT school_club_team FROM table_name_8 WHERE acquisition_via = \"trade\" AND name = \"jondan salvador\"",
+    "base": "SELECT school_club_team FROM table_name_8 WHERE acquisition_via = 'trade' AND name = 'Jondan Salvador'",
+    "tuned": "SELECT school_club_team FROM table_name_8 WHERE acquisition_via = 'trade' AND name = 'Jondan Salvador'"
+  },
+  {
+    "question": "What is the Label of the release on June 12, 2008 in Cyprus?",
+    "reference": "SELECT label FROM table_name_62 WHERE date = \"june 12, 2008\" AND region = \"cyprus\"",
+    "base": "```sql\nSELECT label FROM table_name_62 WHERE date = 'June 12, 2008' AND region = 'Cyprus';\n```",
+    "tuned": "```sql\nSELECT label FROM table_name_62 WHERE date = 'June 12, 2008' AND region = 'Cyprus';\n```"
+  },
+  {
+    "question": "What is the team when the incoming manager is martin allen?",
+    "reference": "SELECT team FROM table_26914854_3 WHERE incoming_manager = \"Martin Allen\"",
+    "base": "SELECT team FROM table_26914854_3 WHERE incoming_manager = 'martin allen'",
+    "tuned": "SELECT team FROM table_26914854_3 WHERE incoming_manager = 'martin allen'"
+  },
+  {
+    "question": "How many draws correspond to more than 11 losses in a match less than 14?",
+    "reference": "SELECT COUNT(draw) FROM table_name_36 WHERE lost > 11 AND match < 14",
+    "base": "```sql\nSELECT COUNT(draw) AS draw_count\nFROM table_name_36\nWHERE lost > 11 AND match < 14;\n```",
+    "tuned": "```sql\nSELECT COUNT(draw) AS draw_count\nFROM table_name_36\nWHERE lost > 11 AND match < 14;\n```"
+  },
+  {
+    "question": "what is the years when the duration is 13 years and the character is renee phelan?",
+    "reference": "SELECT years FROM table_name_17 WHERE duration = \"13 years\" AND character = \"renee phelan\"",
+    "base": "```sql\nSELECT years FROM table_name_17 WHERE duration = '13 years' AND character = 'renee phelan';\n```",
+    "tuned": "```sql\nSELECT years FROM table_name_17 WHERE duration = '13 years' AND character = 'renee phelan';\n```"
+  },
+  {
+    "question": "Find the dates on which more than one revisions were made.",
+    "reference": "SELECT date_of_latest_revision FROM Catalogs GROUP BY date_of_latest_revision HAVING COUNT(*) > 1",
+    "base": "SELECT date_of_latest_revision FROM Catalogs GROUP BY date_of_latest_revision HAVING COUNT(*) > 1",
+    "tuned": "SELECT date_of_latest_revision FROM Catalogs GROUP BY date_of_latest_revision HAVING COUNT(*) > 1"
+  },
+  {
+    "question": "Which vehicle has a class 6c3g?",
+    "reference": "SELECT vehicle FROM table_name_20 WHERE class = \"6c3g\"",
+    "base": "SELECT vehicle FROM table_name_20 WHERE class = '6c3g'",
+    "tuned": "SELECT vehicle FROM table_name_20 WHERE class = '6c3g'"
+  },
+  {
+    "question": "What is the average launch date of the vmv-1 vessel in Germany?",
+    "reference": "SELECT AVG(launched) FROM table_name_37 WHERE location = \"germany\" AND ship = \"vmv-1\"",
+    "base": "SELECT AVG(launched) FROM table_name_37 WHERE location = 'Germany' AND ship = 'vmv-1'",
+    "tuned": "SELECT AVG(launched) FROM table_name_37 WHERE location = 'Germany' AND ship = 'vmv-1'"
+  },
+  {
+    "question": "WHAT SCHOOL DID THE PLAYER FROM SOUTH CAROLINA ATTEND?",
+    "reference": "SELECT school FROM table_11677691_2 WHERE college = \"South Carolina\"",
+    "base": "SELECT school FROM table_11677691_2 WHERE college = 'South Carolina'",
+    "tuned": "SELECT school FROM table_11677691_2 WHERE college = 'South Carolina'"
+  },
+  {
+    "question": "What is the highest round of Tommy Allman, who had a pick less than 40?",
+    "reference": "SELECT MAX(round) FROM table_name_27 WHERE player = \"tommy allman\" AND pick < 40",
+    "base": "```sql\nSELECT MAX(round) FROM table_name_27 WHERE player = 'tommy allman' AND pick < 40;\n```",
+    "tuned": "```sql\nSELECT MAX(round) FROM table_name_27 WHERE player = 'tommy allman' AND pick < 40;\n```"
+  },
+  {
+    "question": "How many floors does detroit marriott at the renaissance center have?",
+    "reference": "SELECT MAX(floors) FROM table_name_70 WHERE name = \"detroit marriott at the renaissance center\"",
+    "base": "SELECT AVG(floors) FROM table_name_70 WHERE name = 'detroit marriott at the renaisonce center'",
+    "tuned": "SELECT AVG(floors) FROM table_name_70 WHERE name = 'detroit marriott at the renaisonce center'"
+  },
+  {
+    "question": "Name the country that has m\u00e4ntt\u00e4",
+    "reference": "SELECT country FROM table_name_2 WHERE place = \"m\u00e4ntt\u00e4\"",
+    "base": "SELECT country FROM table_name_2 WHERE place = 'm\u00e4ntt\u00e4'",
+    "tuned": "SELECT country FROM table_name_2 WHERE place = 'm\u00e4ntt\u00e4'"
+  },
+  {
+    "question": "Who was the opponent on June 15?",
+    "reference": "SELECT opponent FROM table_name_71 WHERE date = \"june 15\"",
+    "base": "SELECT opponent FROM table_name_71 WHERE date = 'June 15'",
+    "tuned": "SELECT opponent FROM table_name_71 WHERE date = 'June 15'"
+  },
+  {
+    "question": "Tell me the chief judge which has reason for termination of retirement",
+    "reference": "SELECT chief_judge FROM table_name_35 WHERE reason_for_termination = \"retirement\"",
+    "base": "```sql\nSELECT chief_judge FROM table_name_35 WHERE reason_for_termination = 'retirement';\r\n```",
+    "tuned": "```sql\nSELECT chief_judge FROM table_name_35 WHERE reason_for_termination = 'retirement';\r\n```"
+  },
+  {
+    "question": "What is the total of the player who won before 1991 and has a to par less than 14?",
+    "reference": "SELECT COUNT(total) FROM table_name_74 WHERE year_won < 1991 AND to_par < 14",
+    "base": "```sql\nSELECT total FROM table_name_74 WHERE year_won < 1991 AND to_par < 14;\n```",
+    "tuned": "```sql\nSELECT total FROM table_name_74 WHERE year_won < 1991 AND to_par < 14;\n```"
+  },
+  {
+    "question": "What region has the symbol \u516b\u5c3e?",
+    "reference": "SELECT region FROM table_name_71 WHERE japanese = \"\u516b\u5c3e\"",
+    "base": "SELECT region FROM table_name_71 WHERE japanese = '\u516b\u5c3e'",
+    "tuned": "SELECT region FROM table_name_71 WHERE japanese = '\u516b\u5c3e'"
+  },
+  {
+    "question": "The country of Spain has what score?",
+    "reference": "SELECT score FROM table_name_63 WHERE country = \"spain\"",
+    "base": "SELECT score FROM table_name_63 WHERE country = 'Spain'",
+    "tuned": "SELECT score FROM table_name_63 WHERE country = 'Spain'"
+  },
+  {
+    "question": "What is the location attendance of the game on February 25?",
+    "reference": "SELECT location_attendance FROM table_name_52 WHERE date = \"february 25\"",
+    "base": "SELECT location_attendance FROM table_name_52 WHERE date = 'February 25'",
+    "tuned": "SELECT location_attendance FROM table_name_52 WHERE date = 'February 25'"
+  },
+  {
+    "question": "What competition did Lineth Chepkurui place 5th?",
+    "reference": "SELECT competition FROM table_name_27 WHERE position = \"5th\"",
+    "base": "SELECT competition FROM table_name_27 WHERE position = '5th' AND competition LIKE '%Lineth%Chepkurui%'",
+    "tuned": "SELECT competition FROM table_name_27 WHERE position = '5th' AND competition LIKE '%Lineth%Chepkurui%'"
+  },
+  {
+    "question": "What league was involved in 2010?",
+    "reference": "SELECT league FROM table_21602734_1 WHERE year = 2010",
+    "base": "SELECT league FROM table_21602734_1 WHERE year = '2010'",
+    "tuned": "SELECT league FROM table_21602734_1 WHERE year = '2010'"
+  },
+  {
+    "question": "Which IHSAA Class has a Size larger than 511?",
+    "reference": "SELECT ihsaa_class FROM table_name_84 WHERE size > 511",
+    "base": "```sql\nSELECT ihsaa_class FROM table_name_84 WHERE size > 511;\n```",
+    "tuned": "```sql\nSELECT ihsaa_class FROM table_name_84 WHERE size > 511;\n```"
+  },
+  {
+    "question": "Which Team has a Score of 108-107?",
+    "reference": "SELECT team FROM table_name_82 WHERE score = \"108-107\"",
+    "base": "SELECT team FROM table_name_82 WHERE score = '108-107'",
+    "tuned": "SELECT team FROM table_name_82 WHERE score = '108-107'"
+  },
+  {
+    "question": "What's the 102kg when the snatch was snatch and the olympic record was the world record?",
+    "reference": "SELECT 102 AS kg FROM table_name_56 WHERE world_record = \"olympic record\" AND \"snatch\" = \"snatch\"",
+    "base": "SELECT world_record FROM table_name_56 WHERE snatch = 'snatch' AND olympic_record = 'world record' AND weight_class = '102kg';",
+    "tuned": "SELECT world_record FROM table_name_56 WHERE snatch = 'snatch' AND olympic_record = 'world record' AND weight_class = '102kg';"
+  },
+  {
+    "question": "Total larger than 3, and a Rank of 4, and a Silver larger than 0 has what average gold?",
+    "reference": "SELECT AVG(gold) FROM table_name_2 WHERE total > 3 AND rank = \"4\" AND silver > 0",
+    "base": "SELECT AVG(gold) FROM table_name_2 WHERE total > 3 AND rank = '4' AND silver > 0",
+    "tuned": "SELECT AVG(gold) FROM table_name_2 WHERE total > 3 AND rank = '4' AND silver > 0"
+  },
+  {
+    "question": "How many countries spent at least $51.0 billion in international tourism in 2012?",
+    "reference": "SELECT MAX(rank_2012) FROM table_29789_3 WHERE international_tourism_expenditure_2011 = \"$51.0 billion\"",
+    "base": "SELECT COUNT(rank_2012) FROM table_29789_3 WHERE rank_2012 > 0 AND international_tourism_expenditure_2011 >= '51.0'",
+    "tuned": "SELECT COUNT(rank_2012) FROM table_29789_3 WHERE rank_2012 > 0 AND international_tourism_expenditure_2011 >= '51.0'"
+  },
+  {
+    "question": "What is the Japanese name of the station with a number 3?",
+    "reference": "SELECT japanese FROM table_name_98 WHERE number = 3",
+    "base": "SELECT japanese FROM table_name_98 WHERE number = '3'",
+    "tuned": "SELECT japanese FROM table_name_98 WHERE number = '3'"
+  },
+  {
+    "question": "What is the cfl team with ryan folk?",
+    "reference": "SELECT cfl_team FROM table_10975034_5 WHERE player = \"Ryan Folk\"",
+    "base": "SELECT cfl_team FROM table_10975034_5 WHERE player = 'Ryan Folk'",
+    "tuned": "SELECT cfl_team FROM table_10975034_5 WHERE player = 'Ryan Folk'"
+  },
+  {
+    "question": "What is the percentage of others with a Fidesz of 62% and a Jobbik of 4%?",
+    "reference": "SELECT others FROM table_name_93 WHERE fidesz = \"62%\" AND jobbik = \"4%\"",
+    "base": "SELECT CAST(COUNT(others) AS FLOAT) * 100 / COUNT(DISTINCT o) FROM table_name_93 WHERE fidesz = '62%' AND jobbik = '4%'",
+    "tuned": "SELECT CAST(COUNT(others) AS FLOAT) * 100 / COUNT(DISTINCT o) FROM table_name_93 WHERE fidesz = '62%' AND jobbik = '4%'"
+  },
+  {
+    "question": "Which pick was used on Ian Hazlett?",
+    "reference": "SELECT MIN(pick) FROM table_name_8 WHERE player = \"ian hazlett\"",
+    "base": "SELECT MAX(pick) FROM table_name_8 WHERE player = 'ian hazlett'",
+    "tuned": "SELECT MAX(pick) FROM table_name_8 WHERE player = 'ian hazlett'"
+  },
+  {
+    "question": "Which Location /State has a Winner of craig lowndes, and a Date of 29\u201331 may?",
+    "reference": "SELECT location___state FROM table_name_67 WHERE winner = \"craig lowndes\" AND date = \"29\u201331 may\"",
+    "base": "```sql\nSELECT location___state FROM table_name_67 WHERE winner = 'craig lowndes' AND date = '29-31 may';\r\n```",
+    "tuned": "```sql\nSELECT location___state FROM table_name_67 WHERE winner = 'craig lowndes' AND date = '29-31 may';\r\n```"
+  },
+  {
+    "question": "Which Label was cataloged as alca-9013?",
+    "reference": "SELECT label FROM table_name_2 WHERE catalog = \"alca-9013\"",
+    "base": "SELECT label FROM table_name_2 WHERE catalog = 'alca-9013'",
+    "tuned": "SELECT label FROM table_name_2 WHERE catalog = 'alca-9013'"
+  },
+  {
+    "question": "What was the court surface on year 1971?",
+    "reference": "SELECT surface FROM table_2112025_3 WHERE year = 1971",
+    "base": "SELECT surface FROM table_2112025_3 WHERE year = '1971'",
+    "tuned": "SELECT surface FROM table_2112025_3 WHERE year = '1971'"
+  },
+  {
+    "question": "What was the score and game outcome when High Points was andre miller (17)?",
+    "reference": "SELECT score FROM table_17323042_11 WHERE high_points = \"Andre Miller (17)\"",
+    "base": "SELECT score, 'Andre Miller' AS high_points FROM table_17323042_11 WHERE high_points = 'andre miller (17)'",
+    "tuned": "SELECT score, 'Andre Miller' AS high_points FROM table_17323042_11 WHERE high_points = 'andre miller (17)'"
+  },
+  {
+    "question": "What circuit did marlboro team penske win with an unknown fastest lap?",
+    "reference": "SELECT circuit FROM table_name_67 WHERE winning_team = \"marlboro team penske\" AND fastest_lap = \"unknown\"",
+    "base": "SELECT circuit FROM table_name_67 WHERE winning_team = \"marlboro team penske\" AND fastest_lap IS NULL",
+    "tuned": "SELECT circuit FROM table_name_67 WHERE winning_team = \"marlboro team penske\" AND fastest_lap IS NULL"
+  },
+  {
+    "question": "WHAT IS Val-de-Marne WITH Seine-Saint-Denis of 4.0%?",
+    "reference": "SELECT val_de_marne FROM table_name_52 WHERE seine_saint_denis = \"4.0%\"",
+    "base": "SELECT val_de_marne FROM table_name_52 WHERE seine_saint_denis = '4.0%'",
+    "tuned": "SELECT val_de_marne FROM table_name_52 WHERE seine_saint_denis = '4.0%'"
+  },
+  {
+    "question": "What year had the supernova award?",
+    "reference": "SELECT year FROM table_name_46 WHERE category = \"supernova award\"",
+    "base": "SELECT year FROM table_name_46 WHERE category = 'supernova'",
+    "tuned": "SELECT year FROM table_name_46 WHERE category = 'supernova'"
+  },
+  {
+    "question": "What was the method when 4-2 was the record?",
+    "reference": "SELECT method FROM table_name_56 WHERE record = \"4-2\"",
+    "base": "SELECT method FROM table_name_56 WHERE record = '4-2'",
+    "tuned": "SELECT method FROM table_name_56 WHERE record = '4-2'"
+  },
+  {
+    "question": "What was the date of the game that had a decision of wall?",
+    "reference": "SELECT date FROM table_name_41 WHERE decision = \"wall\"",
+    "base": "SELECT date FROM table_name_41 WHERE decision = 'wall'",
+    "tuned": "SELECT date FROM table_name_41 WHERE decision = 'wall'"
+  },
+  {
+    "question": "What is the status for Saint George? ",
+    "reference": "SELECT status FROM table_170969_2 WHERE official_name = \"Saint George\"",
+    "base": "SELECT status FROM table_170969_2 WHERE official_name = 'Saint George'",
+    "tuned": "SELECT status FROM table_170969_2 WHERE official_name = 'Saint George'"
+  },
+  {
+    "question": "indoor year is 1978, what is the record?",
+    "reference": "SELECT record FROM table_name_70 WHERE indoor_year = \"1978\"",
+    "base": "SELECT record FROM table_name_70 WHERE indoor_year = '1978'",
+    "tuned": "SELECT record FROM table_name_70 WHERE indoor_year = '1978'"
+  },
+  {
+    "question": "What is the visiting team that has a home team related to footscray?",
+    "reference": "SELECT away_team FROM table_name_24 WHERE home_team = \"footscray\"",
+    "base": "```sql\nSELECT away_team FROM table_name_24 WHERE home_team LIKE '%footscray%';\r\n```",
+    "tuned": "```sql\nSELECT away_team FROM table_name_24 WHERE home_team LIKE '%footscray%';\r\n```"
+  },
+  {
+    "question": "What year were there 29 (32) points?",
+    "reference": "SELECT year FROM table_name_3 WHERE points = \"29 (32)\"",
+    "base": "SELECT year FROM table_name_3 WHERE points = '29' OR points = '32'",
+    "tuned": "SELECT year FROM table_name_3 WHERE points = '29' OR points = '32'"
+  },
+  {
+    "question": "Who drove a race car with a Mercedes IC 108e engine and has an 8-10 record?",
+    "reference": "SELECT drivers FROM table_name_28 WHERE engine = \"mercedes ic 108e\" AND races = \"8-10\"",
+    "base": "```sql\nSELECT drivers FROM table_name_28 WHERE engine = 'Mercedes IC 108e' AND races LIKE '%8-10%';\r\n```",
+    "tuned": "```sql\nSELECT drivers FROM table_name_28 WHERE engine = 'Mercedes IC 108e' AND races LIKE '%8-10%';\r\n```"
+  },
+  {
+    "question": "What is the Result with a Score of 1\u20130, and a Date with 18 april 2009?",
+    "reference": "SELECT result FROM table_name_35 WHERE score = \"1\u20130\" AND date = \"18 april 2009\"",
+    "base": "SELECT result FROM table_name_35 WHERE score = '1-0' AND date = '18 april 2009'",
+    "tuned": "SELECT result FROM table_name_35 WHERE score = '1-0' AND date = '18 april 2009'"
+  },
+  {
+    "question": "Which League championship is the lowest one that has a Venue of penn state ice pavilion, and a Club of penn state nittany lions men's ice hockey?",
+    "reference": "SELECT MIN(league) AS championships FROM table_name_78 WHERE venue = \"penn state ice pavilion\" AND club = \"penn state nittany lions men's ice hockey\"",
+    "base": "SELECT MIN(league) FROM table_name_78 WHERE venue = 'penn state ice pavilion' AND club = 'penn state nittany lions men\\'s ice hockey'",
+    "tuned": "SELECT MIN(league) FROM table_name_78 WHERE venue = 'penn state ice pavilion' AND club = 'penn state nittany lions men\\'s ice hockey'"
+  },
+  {
+    "question": "WHich City of license has a FCC info of fcc, and 10,000 horizontal 3,000 vertical ERP W",
+    "reference": "SELECT city_of_license FROM table_name_42 WHERE fcc_info = \"fcc\" AND erp_w = \"10,000 horizontal 3,000 vertical\"",
+    "base": "```sql\nSELECT city_of_license FROM table_name_42 WHERE fcc_info = 'fcc' AND erp_w = '10,000 horizontal 3,000 vertical';\r\n```",
+    "tuned": "```sql\nSELECT city_of_license FROM table_name_42 WHERE fcc_info = 'fcc' AND erp_w = '10,000 horizontal 3,000 vertical';\r\n```"
+  },
+  {
+    "question": "What day is the team 17\u201324\u20135?",
+    "reference": "SELECT date FROM table_name_59 WHERE record = \"17\u201324\u20135\"",
+    "base": "SELECT date FROM table_name_59 WHERE record = '17-24-5'",
+    "tuned": "SELECT date FROM table_name_59 WHERE record = '17-24-5'"
+  },
+  {
+    "question": "What is the country for the player who had a To Par of +4?",
+    "reference": "SELECT country FROM table_name_76 WHERE to_par = \"+4\"",
+    "base": "SELECT country FROM table_name_76 WHERE to_par = '+4'",
+    "tuned": "SELECT country FROM table_name_76 WHERE to_par = '+4'"
+  },
+  {
+    "question": "What cub team or college did Bob Law come from?",
+    "reference": "SELECT college_junior_club_team FROM table_1965650_8 WHERE player = \"Bob Law\"",
+    "base": "SELECT college_junior_club_team FROM table_1965650_8 WHERE player = 'Bob Law'",
+    "tuned": "SELECT college_junior_club_team FROM table_1965650_8 WHERE player = 'Bob Law'"
+  },
+  {
+    "question": "What week 14 has the lowest attendance?",
+    "reference": "SELECT MIN(attendance) FROM table_name_75 WHERE week = 14",
+    "base": "SELECT MIN(attendance) AS 'week', week FROM table_name_75 WHERE attendance IN (attendance) ORDER BY week ASC LIMIT 1",
+    "tuned": "SELECT MIN(attendance) AS 'week', week FROM table_name_75 WHERE attendance IN (attendance) ORDER BY week ASC LIMIT 1"
+  },
+  {
+    "question": "What is the round played on 13 October 1984?",
+    "reference": "SELECT round FROM table_name_41 WHERE date = \"13 october 1984\"",
+    "base": "SELECT round FROM table_name_41 WHERE date = '13 OCTOBER 1984'",
+    "tuned": "SELECT round FROM table_name_41 WHERE date = '13 OCTOBER 1984'"
+  },
+  {
+    "question": "Who were all the candidates when the first elected year was 1961?",
+    "reference": "SELECT candidates FROM table_1341884_20 WHERE first_elected = 1961",
+    "base": "SELECT candidates FROM table_1341884_20 WHERE first_elected = '1961'",
+    "tuned": "SELECT candidates FROM table_1341884_20 WHERE first_elected = '1961'"
+  },
+  {
+    "question": "Which tournament had a performance of 1R in 2004 and 2R in 1998?",
+    "reference": "SELECT tournament FROM table_name_79 WHERE 2004 = \"1r\" AND 1998 = \"2r\"",
+    "base": "```sql\nSELECT tournament FROM table_name_79 WHERE performance IN ('1r', '2r') AND YEAR = 2004 OR YEAR = 1998;\n```",
+    "tuned": "```sql\nSELECT tournament FROM table_name_79 WHERE performance IN ('1r', '2r') AND YEAR = 2004 OR YEAR = 1998;\n```"
+  },
+  {
+    "question": "What is the total for a to par bigger than 7 and a player of al geiberger?",
+    "reference": "SELECT COUNT(total) FROM table_name_58 WHERE player = \"al geiberger\" AND to_par > 7",
+    "base": "SELECT total FROM table_name_58 WHERE to_par > 7 AND player = 'al geiberger'",
+    "tuned": "SELECT total FROM table_name_58 WHERE to_par > 7 AND player = 'al geiberger'"
+  },
+  {
+    "question": "What is the Date of the Competition with a Score of 2\u20130?",
+    "reference": "SELECT date FROM table_name_96 WHERE score = \"2\u20130\"",
+    "base": "SELECT date FROM table_name_96 WHERE score = '2-0'",
+    "tuned": "SELECT date FROM table_name_96 WHERE score = '2-0'"
+  },
+  {
+    "question": "Who is in February where has September is kristine hanson?",
+    "reference": "SELECT february FROM table_name_13 WHERE september = \"kristine hanson\"",
+    "base": "SELECT february FROM table_name_13 WHERE september = 'kristine hanson'",
+    "tuned": "SELECT february FROM table_name_13 WHERE september = 'kristine hanson'"
+  },
+  {
+    "question": "What game site has december 24, 2000 as a date?",
+    "reference": "SELECT game_site FROM table_name_58 WHERE date = \"december 24, 2000\"",
+    "base": "SELECT game_site FROM table_name_58 WHERE date = 'december 24, 2000'",
+    "tuned": "SELECT game_site FROM table_name_58 WHERE date = 'december 24, 2000'"
+  },
+  {
+    "question": "Which bubble have a cancelable of yes and an attribute of onpointerdown?",
+    "reference": "SELECT bubbles FROM table_name_58 WHERE cancelable = \"yes\" AND attribute = \"onpointerdown\"",
+    "base": "```sql\nSELECT bubbles FROM table_name_58 WHERE cancelable = 'yes' AND attribute = 'onpointerdown';\n```",
+    "tuned": "```sql\nSELECT bubbles FROM table_name_58 WHERE cancelable = 'yes' AND attribute = 'onpointerdown';\n```"
+  },
+  {
+    "question": "Which Place has a Player of justin leonard?",
+    "reference": "SELECT place FROM table_name_48 WHERE player = \"justin leonard\"",
+    "base": "SELECT place FROM table_name_48 WHERE player = \"justin leonard\"",
+    "tuned": "SELECT place FROM table_name_48 WHERE player = \"justin leonard\""
+  },
+  {
+    "question": "Tell me the title for the production code less than 706 with series number more than 175",
+    "reference": "SELECT title FROM table_name_78 WHERE series__number > 175 AND production_code < 706",
+    "base": "```sql\nSELECT title FROM table_name_78 WHERE production_code < 706 AND series__number > 175;\n```",
+    "tuned": "```sql\nSELECT title FROM table_name_78 WHERE production_code < 706 AND series__number > 175;\n```"
+  },
+  {
+    "question": "Find the name and partition id for users who tweeted less than twice.",
+    "reference": "SELECT T1.name, T1.partitionid FROM user_profiles AS T1 JOIN tweets AS T2 ON T1.uid = T2.uid GROUP BY T2.uid HAVING COUNT(*) < 2",
+    "base": "SELECT u.name, u.partitionid FROM user_profiles u JOIN tweets t ON u.uid = t.uid WHERE t.uid IN (SELECT uid FROM tweets GROUP BY uid HAVING COUNT(uid) < 2)",
+    "tuned": "SELECT u.name, u.partitionid FROM user_profiles u JOIN tweets t ON u.uid = t.uid WHERE t.uid IN (SELECT uid FROM tweets GROUP BY uid HAVING COUNT(uid) < 2)"
+  },
+  {
+    "question": "Which Ends have a Name of zambrano?",
+    "reference": "SELECT MAX(ends) FROM table_name_41 WHERE name = \"zambrano\"",
+    "base": "SELECT ends FROM table_name_41 WHERE name = 'zambrano'",
+    "tuned": "SELECT ends FROM table_name_41 WHERE name = 'zambrano'"
+  },
+  {
+    "question": "How many oricon's have a romaji title of rakuen -memorial tracks- (maxi-single)?",
+    "reference": "SELECT COUNT(oricon) FROM table_name_13 WHERE romaji_title = \"rakuen -memorial tracks- (maxi-single)\"",
+    "base": "SELECT COUNT(oricon) FROM table_name_13 WHERE romaji_title = 'rakuen - memorial tracks - (maxi-single)'",
+    "tuned": "SELECT COUNT(oricon) FROM table_name_13 WHERE romaji_title = 'rakuen - memorial tracks - (maxi-single)'"
+  },
+  {
+    "question": "Name the least weeks at number 1 for 1988",
+    "reference": "SELECT MIN(weeks_at__number1) FROM table_27441210_5 WHERE year = 1988",
+    "base": "SELECT MIN(weeks_at__number1) AS min_weeks FROM table_27441210_5 WHERE year = '1988'",
+    "tuned": "SELECT MIN(weeks_at__number1) AS min_weeks FROM table_27441210_5 WHERE year = '1988'"
+  },
+  {
+    "question": "Whats the song of name with an original artist Garth Brooks",
+    "reference": "SELECT song_choice FROM table_21501518_1 WHERE original_artist = \"Garth Brooks\"",
+    "base": "SELECT song_choice FROM table_21501518_1 WHERE original_artist = 'Garth Brooks'",
+    "tuned": "SELECT song_choice FROM table_21501518_1 WHERE original_artist = 'Garth Brooks'"
+  },
+  {
+    "question": "How many different partners played in the finale in 1973?",
+    "reference": "SELECT COUNT(partner) FROM table_2820584_3 WHERE year = 1973",
+    "base": "SELECT COUNT(DISTINCT partner) FROM table_2820584_3 WHERE year = '1973'",
+    "tuned": "SELECT COUNT(DISTINCT partner) FROM table_2820584_3 WHERE year = '1973'"
+  },
+  {
+    "question": "What Willinghshain has Reimboldsh of 101?",
+    "reference": "SELECT willingshain FROM table_name_27 WHERE reimboldsh = \"101\"",
+    "base": "SELECT willingshain FROM table_name_27 WHERE reimboldsh = '101'",
+    "tuned": "SELECT willingshain FROM table_name_27 WHERE reimboldsh = '101'"
+  },
+  {
+    "question": "What 2012 amount of earnings corresponds with less than 28 tournaments played?",
+    "reference": "SELECT earnings___$__ FROM table_name_59 WHERE tournaments_played < 28 AND year = \"2012\"",
+    "base": "SELECT earnings___$__ FROM table_name_59 WHERE tournaments_played < 28 AND YEAR = '2012'",
+    "tuned": "SELECT earnings___$__ FROM table_name_59 WHERE tournaments_played < 28 AND YEAR = '2012'"
+  },
+  {
+    "question": "What is the highest number of matches that has a round of Third Round?",
+    "reference": "SELECT MAX(matches) FROM table_name_22 WHERE round = \"third round\"",
+    "base": "SELECT MAX(matches) FROM table_name_22 WHERE round = 'Third Round'",
+    "tuned": "SELECT MAX(matches) FROM table_name_22 WHERE round = 'Third Round'"
+  },
+  {
+    "question": "What is the lowest points of British Racing after 1963?",
+    "reference": "SELECT MIN(points) FROM table_name_90 WHERE year > 1963",
+    "base": "SELECT MIN(points) FROM table_name_90 WHERE year > 1963 AND country = 'British Racing'",
+    "tuned": "SELECT MIN(points) FROM table_name_90 WHERE year > 1963 AND country = 'British Racing'"
+  },
+  {
+    "question": "How many Top 10s have Wins larger than 0, and Poles larger than 0?",
+    "reference": "SELECT COUNT(top_10) FROM table_name_35 WHERE wins > 0 AND poles > 0",
+    "base": "```sql\nSELECT COUNT(*) FROM table_name_35 WHERE wins > 0 AND poles > 0;\n```",
+    "tuned": "```sql\nSELECT COUNT(*) FROM table_name_35 WHERE wins > 0 AND poles > 0;\n```"
+  },
+  {
+    "question": "What is the date of the game in a week earlier than 10 played in Texas stadium agains the Atlanta Falcons?",
+    "reference": "SELECT date FROM table_name_92 WHERE week < 10 AND game_site = \"texas stadium\" AND opponent = \"atlanta falcons\"",
+    "base": "SELECT date FROM table_name_92 WHERE week < '10' AND game_site = 'Texas Stadium' AND opponent = 'Atlanta Falcons'",
+    "tuned": "SELECT date FROM table_name_92 WHERE week < '10' AND game_site = 'Texas Stadium' AND opponent = 'Atlanta Falcons'"
+  },
+  {
+    "question": "What Player is a Wide Receiver?",
+    "reference": "SELECT player FROM table_name_40 WHERE position = \"wide receiver\"",
+    "base": "SELECT player FROM table_name_40 WHERE position = 'Wide Receiver'",
+    "tuned": "SELECT player FROM table_name_40 WHERE position = 'Wide Receiver'"
+  },
+  {
+    "question": "What position did the CFL player drafted out of college of toronto in 2007 play?",
+    "reference": "SELECT position FROM table_name_22 WHERE college = \"toronto\"",
+    "base": "SELECT position FROM table_name_22 WHERE college = 'toronto' AND YEAR(drafted) = 2007",
+    "tuned": "SELECT position FROM table_name_22 WHERE college = 'toronto' AND YEAR(drafted) = 2007"
+  },
+  {
+    "question": "Name the score for miami",
+    "reference": "SELECT score FROM table_27723228_7 WHERE team = \"Miami\"",
+    "base": "SELECT score FROM table_27723228_7 WHERE team = 'Miami'",
+    "tuned": "SELECT score FROM table_27723228_7 WHERE team = 'Miami'"
+  },
+  {
+    "question": "Which Tie is from everton?",
+    "reference": "SELECT tie_no FROM table_name_89 WHERE home_team = \"everton\"",
+    "base": "SELECT tie_no FROM table_name_89 WHERE home_team = 'everton'",
+    "tuned": "SELECT tie_no FROM table_name_89 WHERE home_team = 'everton'"
+  },
+  {
+    "question": "What is the sign of the Burmese taninganwe \u1010\u1014\u1004\u103a\u1039\u1002\u1014\u103d\u1031?",
+    "reference": "SELECT sign FROM table_name_94 WHERE burmese = \"taninganwe \u1010\u1014\u1004\u103a\u1039\u1002\u1014\u103d\u1031\"",
+    "base": "SELECT sign FROM table_name_94 WHERE burmese = '\u1010\u1014\u1004\u103a\u1039\u1002\u1014\u103d\u1031'",
+    "tuned": "SELECT sign FROM table_name_94 WHERE burmese = '\u1010\u1014\u1004\u103a\u1039\u1002\u1014\u103d\u1031'"
+  },
+  {
+    "question": "What was the speed of the rider that earned 1 point?",
+    "reference": "SELECT speed FROM table_name_24 WHERE points = 1",
+    "base": "SELECT speed FROM table_name_24 WHERE points = '1'",
+    "tuned": "SELECT speed FROM table_name_24 WHERE points = '1'"
+  },
+  {
+    "question": "List the names of editors who are older than 25.",
+    "reference": "SELECT Name FROM editor WHERE Age > 25",
+    "base": "SELECT Name FROM editor WHERE Age > 25;",
+    "tuned": "SELECT Name FROM editor WHERE Age > 25;"
+  },
+  {
+    "question": "How many schools left in 2002-03?",
+    "reference": "SELECT COUNT(location) FROM table_262560_2 WHERE left = \"2002-03\"",
+    "base": "SELECT COUNT(left) FROM table_262560_2 WHERE location = 'schools' AND left LIKE '%2002-03%'",
+    "tuned": "SELECT COUNT(left) FROM table_262560_2 WHERE location = 'schools' AND left LIKE '%2002-03%'"
+  },
+  {
+    "question": "What is the lowest round of the Kitchener Rangers (OHA)?",
+    "reference": "SELECT MIN(round) FROM table_name_97 WHERE college_junior_club_team__league_ = \"kitchener rangers (oha)\"",
+    "base": "SELECT MIN(round) FROM table_name_97 WHERE college_junior_club_team__league_ = 'Kitchener Rangers (OHA)'",
+    "tuned": "SELECT MIN(round) FROM table_name_97 WHERE college_junior_club_team__league_ = 'Kitchener Rangers (OHA)'"
+  },
+  {
+    "question": "In what year did Aslan receive a Lifetime Achievement Award and Snow Patrol perform?",
+    "reference": "SELECT year FROM table_name_56 WHERE band = \"snow patrol\" AND lifetime_achievement_award = \"aslan\"",
+    "base": "SELECT year FROM table_name_56 WHERE band IN ('Aslan', 'Snow Patrol') AND lifetime_achievement_award = 'Lifetime Achievement Award'",
+    "tuned": "SELECT year FROM table_name_56 WHERE band IN ('Aslan', 'Snow Patrol') AND lifetime_achievement_award = 'Lifetime Achievement Award'"
+  }
+]

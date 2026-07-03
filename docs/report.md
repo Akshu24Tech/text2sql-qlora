@@ -1,75 +1,85 @@
-# Text-to-SQL with QLoRA — Project Report
+# Text-to-SQL with QLoRA (Qwen2.5-1.5B) — Project Report
 
 **Author:** Akshu Grewal
 **Assessment:** IR InFotech Round 4 (ML / Model Training / Model Fine-Tuning)
 
 ## Problem Statement
 
-Small open LLMs are handy for cheap, local inference, but out of the box they are unreliable at producing exact SQL for a given schema. They paraphrase, add markdown fences, or invent column names. The goal of this project is to take a small instruct model (Qwen2.5-1.5B-Instruct) and fine-tune it with QLoRA so it reliably converts a plain English question plus a table schema into the correct SQL query, and to measure that improvement properly against the base model.
+Text-to-SQL is the task of turning a natural-language question into a SQL query against a known database schema. Given a `CREATE TABLE` statement and a question like *"How many heads of the departments are older than 56?"*, the model should output `SELECT COUNT(*) FROM head WHERE age > 56`.
 
-I picked text-to-SQL because it has an objective right answer per example. That makes the before/after comparison honest, no vibes-based evaluation.
+I picked it because it's a real, useful problem with an objective target for every example (there's a reference query to compare against), and because it's a natural fit for parameter-efficient fine-tuning: a small instruction-tuned model can already write SQL, so fine-tuning is about steering *how* it answers — bare SQL in a specific style — rather than teaching SQL from scratch.
 
 ## Solution Approach
 
-1. Clean and split a public text-to-SQL dataset into fixed train/eval sets (committed to the repo so results are reproducible).
-2. Fine-tune the base model with QLoRA on a free Colab T4.
-3. Score base vs fine-tuned on the same held-out examples with exact match and normalized match.
+Take a small instruction model, `Qwen/Qwen2.5-1.5B-Instruct`, and fine-tune it with **QLoRA**: load the base model in 4-bit, freeze it, and train only a small LoRA adapter on top. Then check what the fine-tuning did by comparing two models on the same held-out eval set:
+
+1. **Qwen2.5-1.5B-Instruct, before fine-tuning** — the honest starting point.
+2. **Qwen2.5-1.5B-Instruct + QLoRA adapter** — the same model with the trained adapter loaded on top.
+
+QLoRA is what makes this fit on a free Colab T4 (16GB): 4-bit quantization shrinks the frozen base, and only the ~70MB adapter is trained and saved.
 
 ## Dataset & Preprocessing
 
-**Dataset:** [b-mc2/sql-create-context](https://huggingface.co/datasets/b-mc2/sql-create-context) (~78.6k examples). Each row: natural language question, schema as a CREATE TABLE statement, target SQL.
+**Dataset:** [b-mc2/sql-create-context](https://huggingface.co/datasets/b-mc2/sql-create-context) — 78,577 `(question, context, answer)` triples, where `context` is a `CREATE TABLE` schema and `answer` is the reference SQL.
 
-**Preprocessing** (`notebooks/01_data_prep.ipynb`):
-- Dropped duplicate questions to avoid train/eval leakage (the same question shows up with near-identical schemas).
-- Filtered out overly long rows (question > 300 chars, schema > 500, answer > 300) so full prompts fit a 512 token budget on the T4.
-- Sampled 8,000 training and 500 eval examples with a fixed seed (42). Both files are committed as JSONL.
-
-**Prompt format:** the model's own chat template. System prompt pins the task ("reply with only the SQL query"), user turn carries schema + question, assistant turn is the target SQL. Inference uses the identical format, so there's no train/inference mismatch.
+**Preprocessing** (`notebooks/01_data_prep.ipynb`, runs on CPU):
+- Deduplicated on the `question` field (78,577 → 78,311). The dataset pairs some identical questions with near-identical schemas; leaving them in risks leaking the same example across the train/eval boundary.
+- Length-filtered on character counts (question < 300, context < 500, answer < 300) so full prompts fit comfortably in the token budget — dropped a further ~70 rows, leaving 78,243.
+- Sampled 8,500 rows with a fixed seed (42) and split into **8,000 train / 500 eval**. Both splits are written to `data/train.jsonl` and `data/eval.jsonl` and committed, so the training and eval notebooks always see the same data.
 
 ## Model Selection
 
 **Qwen2.5-1.5B-Instruct.** Reasons:
-- Small enough to fine-tune and run in 4-bit on a free T4 (16GB) with headroom.
-- Instruct-tuned already, so it follows the output format quickly and the fine-tune only has to teach SQL precision, not instruction following from scratch.
-- Strong base quality for its size compared to alternatives I considered (TinyLlama-1.1B, Phi-2).
+- It's small (1.5B params) and, quantized to 4-bit, trains on a single free T4 — no paid hardware needed.
+- It's already instruction-tuned and writes reasonable SQL out of the box, so the fine-tune only has to adjust output style/format, which is exactly what LoRA is good at.
+- Its chat template gives a clean, consistent prompt format to train and evaluate against.
 
-Architecture in one line: a standard decoder-only transformer (1.5B params, grouped-query attention, ~32k vocab chat template), kept frozen in 4-bit; the only trainable parts are the LoRA adapter matrices injected into the attention and MLP projection layers.
+**Prompt format:** each example is a short chat — a fixed system prompt (*"reply with only the SQL query, nothing else"*), a user turn with the schema and question, and the assistant turn as the target SQL. Using the model's own chat template means eval-time inference looks exactly like training.
 
 ## Training / Fine-Tuning Process
 
-QLoRA (`notebooks/02_train_qlora.ipynb`):
-- Base model loaded in 4-bit NF4 with double quantization, fp16 compute (T4 has no bf16).
-- LoRA: r=16, alpha=32, dropout 0.05, on all attention and MLP projections (q/k/v/o/gate/up/down). Attention-only adapters underperformed in a quick smoke test.
-- 1 epoch over 8k examples, effective batch 16 (4 per device x 4 accumulation), lr 2e-4 cosine with 3% warmup, gradient checkpointing on. Sequences stay short by construction thanks to the length filtering in data prep.
-- Trainable params: <!-- TODO: from print_trainable_parameters -->
-- Training time on T4: <!-- TODO -->
-- Final training loss: <!-- TODO: from trainer logs -->
+QLoRA fine-tuning with `trl`'s `SFTTrainer` (`notebooks/02_train_qlora.ipynb`, Colab T4):
+- **Quantization:** 4-bit NF4 with double quantization, fp16 compute dtype (the T4 has no bf16).
+- **LoRA:** `r=16`, `alpha=32`, dropout `0.05`, `bias="none"`, applied to all attention and MLP projections (`q/k/v/o_proj`, `gate/up/down_proj`).
+- **Optimization:** 1 epoch over 8,000 examples, per-device batch 4 × gradient accumulation 4 (effective batch 16), learning rate `2e-4`, cosine schedule with 3% warmup, gradient checkpointing, seed 42.
+- One epoch takes roughly 2–3 hours on the T4. Only the LoRA adapter (~70MB) is saved (to Google Drive, so it survives a runtime reset); the eval notebook loads it back on top of a fresh 4-bit base.
 
-Only the LoRA adapter (~70MB) is saved (to Google Drive), not the full model. The eval notebook loads the base model fresh and applies the adapter on top.
+Two guardrails are baked into the notebooks, both from problems I actually hit (see Challenges):
+- The trainable LoRA params are upcast to fp32 before training, because the newer `trl`/`peft` default of bf16 adapters crashes the fp16 gradient scaler on a T4.
+- Before saving *and* before evaluating, an assertion checks that the adapter's `lora_B` matrices aren't all zero — a fresh, untrained adapter has them at exactly zero, and that would silently produce base-identical predictions.
 
 ## Evaluation Results
 
-200 held-out examples, greedy decoding, same prompts for both models (`notebooks/03_evaluate.ipynb`).
+Both models were scored on the same 200-example slice of the held-out eval set (`notebooks/03_evaluate.ipynb`), generating greedily one example at a time. Two metrics:
+
+- **Exact match** — generated SQL equals the reference, character for character.
+- **Normalized match** — same, but case-insensitive, whitespace collapsed, and a trailing `;` stripped. This is the fairer number, since `SELECT Name` vs `select name` is really the same query.
 
 | Model | Exact match | Normalized match |
 |---|---|---|
-| Base Qwen2.5-1.5B-Instruct | <!-- TODO --> | <!-- TODO --> |
-| + QLoRA fine-tune | <!-- TODO --> | <!-- TODO --> |
+| Qwen2.5-1.5B (before fine-tuning) | 0.04 | 0.05 |
+| Qwen2.5-1.5B + QLoRA (fine-tuned) | 0.04 | 0.05 |
 
-Normalized match ignores case, extra whitespace and a trailing semicolon, since those don't change the query. Exact match is stricter than the task really requires (a correct query written differently counts as wrong), so normalized match is the headline number; note that both metrics still under-count semantically-equivalent-but-differently-written queries.
+**The fine-tuning did not change the results.** On this eval run the tuned model produced output *identical to the base model on all 200 examples*, so the two rows above are the same by construction. `results/predictions.json` holds the per-example base / tuned / reference outputs and confirms this directly.
 
-<!-- TODO: 2-3 sentences interpreting the numbers + reference the fixed/still-wrong examples from the notebook -->
+Two things are going on, and both are worth being honest about:
+
+1. **The adapter had no measurable effect on generation.** Identical outputs on every single example means the trained adapter effectively didn't steer the model at eval time — the tuned model still wraps answers in ` ```sql … ``` ` fences and still uses the base model's quoting style, exactly the behaviours the fine-tune was meant to remove. The most likely causes are the adapter not being applied to the generating model, or a training run whose signal was too weak (1 epoch, and an eval on the saved artifact rather than a re-verified in-session adapter) to shift greedy decoding. Resolving this would mean re-running training and eval end-to-end in one session and confirming the adapter changes at least some predictions before trusting the score.
+
+2. **The string-match metric is harsh, which is why *both* scores are so low (~4–5%).** Many base predictions are semantically correct but fail the match: the model emits ` ```sql ` code fences, writes `WHERE grid = '9'` where the reference has `WHERE grid = "9"`, or picks a defensible-but-different aggregate (`SELECT silver` vs the reference's `SELECT AVG(silver)`). Under exact/normalized string comparison all of these count as wrong even when the SQL is reasonable. This is precisely the gap fine-tuning was supposed to close — align the output format and quoting with the dataset's conventions — and the failure above is that it didn't.
+
+So the honest headline is: the pipeline runs end-to-end and produces a clean before/after comparison, but this fine-tuning run delivered no improvement, and the report reflects that rather than dressing it up.
 
 ## Challenges Faced
 
-- **T4 memory budget.** Full fine-tuning a 1.5B model doesn't fit; 4-bit NF4 + LoRA + gradient checkpointing does, with the sequence length capped at 512. The length filtering in data prep follows directly from this.
-- **Base model output noise.** The base model loves wrapping SQL in markdown fences or explaining itself, which tanks exact match for formatting rather than correctness reasons. The system prompt plus fine-tuning fixed the format; the normalized metric keeps the base comparison fair.
-- **Metric honesty.** String match under-counts correct answers (e.g. `WHERE a=1 AND b=2` vs the flipped order). Proper execution accuracy would need to actually build and run each schema; noted under improvements.
-- **Library version clash on Colab.** My first version pinned an older bitsandbytes, which crashed on model load (`No module named 'triton.ops'`) because Colab's preinstalled triton had removed that module. Lesson: on a managed environment like Colab, work with the preinstalled torch stack and upgrade only what's needed, instead of pinning everything against it.
+- **bf16 adapters on a T4.** The current `trl`/`peft` defaults create LoRA weights in bf16, which crashes the fp16 gradient scaler on the first optimizer step (the T4 has no bf16 support). Fix: upcast the trainable params to fp32 — the standard QLoRA setup of fp32 adapters over an fp16-compute frozen base.
+- **Silently untrained adapters.** A freshly initialized LoRA adapter has all-zero `lora_B` matrices and produces predictions identical to the base model. If training and saving happen in different Colab sessions, it's easy to save a dead adapter without noticing. I added an assertion (`max |lora_B| > 0`) before both saving and evaluating to catch this. Notably, this same failure mode — base-identical predictions — is what the eval run above exhibits, which points at the adapter not actually being in effect during generation.
+- **A metric that punishes correct-but-differently-styled SQL.** Exact/normalized string match treats `'9'` vs `"9"`, code fences, and equivalent aggregates as wrong. It's simple and objective, but it undersells any model that's semantically right in the wrong format — and it makes format-alignment the whole game for the fine-tune.
+- **Free-tier constraints.** Everything GPU runs on a Colab T4, which shaped most of the choices above: a 1.5B model, 4-bit loading, fp16 not bf16, one epoch, and saving the adapter to Drive so it survives runtime resets.
 
 ## Possible Improvements
 
-- **Execution accuracy:** spin up each CREATE TABLE in SQLite, run predicted and reference queries, compare result sets. Much fairer metric than string match.
-- **Harder benchmark:** evaluate on Spider for multi-table joins; sql-create-context is mostly single-table.
-- **Hyperparameter sweep:** r, learning rate, and 2-3 epochs were not swept due to the 48h window; the current config is a sensible first pick, not a tuned one.
-- **DPO pass:** after SFT, a small preference dataset of (correct, plausible-but-wrong) SQL pairs could sharpen precision further.
+- **Fix and re-verify the adapter application.** Run training → save → eval in one session, assert the tuned predictions differ from base on a handful of examples before scoring, and only then report numbers. This is the first thing to do — the current result is inconclusive, not a genuine "fine-tuning doesn't help".
+- **A fairer metric.** Compare on *execution* (run both queries against a small SQLite instance built from the schema and check the result sets match), or at least strip code fences and normalize quoting before matching. This decouples "is the SQL correct" from "does the string match".
+- **Stronger training signal.** More epochs, more data, or masking the loss to the assistant (SQL) tokens only so the model isn't spending capacity re-predicting the schema and question.
+- **Error analysis on real differences.** Once the adapter demonstrably changes outputs, categorize where it helps and where it still fails (joins, aggregates, multi-condition `WHERE`) to guide the next iteration.

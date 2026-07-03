@@ -10,8 +10,11 @@ __pycache__/
 .venv/
 .env
 
-# model outputs (too big for git)
+# model weights / adapters are too big for git (regenerate by running notebook 2)
 outputs/
 *.safetensors
 *.bin
-results/checkpoints/
+
+# but keep the small result artifacts (they're the evidence for the report):
+!results/metrics.json
+!results/predictions.json
