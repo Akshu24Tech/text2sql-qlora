@@ -1,6 +1,7 @@
 # local notes, not part of the submission
 re-fresh-*.md
 notes/
+docs/recording-script.md
 
 # python
 __pycache__/
